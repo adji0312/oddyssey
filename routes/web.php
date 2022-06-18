@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/gameDetail', function(){
+    return view('gameDetail');
+});
+
+Route::get('/cart', function(){
+    return view('cart');
+});
