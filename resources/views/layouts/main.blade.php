@@ -15,7 +15,7 @@
     @include('partials.navbar')
     
     {{-- body --}}
-    <div class="container m-5 mt-3 d-flex flex-column">
+    <div class="container">
         @yield('container')
     </div>
 
