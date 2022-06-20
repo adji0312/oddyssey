@@ -16,7 +16,6 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->foreignId('categoryID');
-            $table->foreignId('reviewID');
             $table->string('title');
             $table->string('description');
             $table->string('thumbnail');
