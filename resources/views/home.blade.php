@@ -6,15 +6,17 @@
     <h2>Featured Games</h2><br>
     <div class="d-flex flex-row gap-3">
         {{-- tinggal loop --}}
-        <div class="card" style="width: 16rem;">
-            <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h5 class="card-title float-end">Price</h5>
-                {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        <a href="" class="text-decoration-none text-dark">
+            <div class="card" style="width: 14rem;">
+                <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title float-end">Price</h5>
+                    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                </div>
             </div>
-        </div>
+        </a>
     </div>
     
     <br>

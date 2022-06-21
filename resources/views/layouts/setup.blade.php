@@ -16,12 +16,12 @@
 
     <title>Oddyssey</title>
   </head>
-  <body>
+  <body style="background-color: #F3F4F6">
 
-    @include('partials.navbar')
+    {{-- @include('partials.navbar') --}}
     
     {{-- body --}}
-    <div class="container">
+    <div class="container mt-5">
         @yield('container')
     </div>
 
