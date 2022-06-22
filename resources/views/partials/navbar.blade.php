@@ -15,8 +15,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/cart">Cart</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" href="#">Admin</a>
+        </li> --}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Admin
+          </a>
+          <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/manageGame">Manage Game</a></li>
+            <li><a class="dropdown-item" href="/manageCategory">Manage Category</a></li>
+            {{-- <li><hr class="dropdown-divider"></li> --}}
+          </ul>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
