@@ -29,3 +29,7 @@ Route::get('/cart', function(){
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+
+Route::get('/manageGame', function(){
+    return view('manageGame');
+});

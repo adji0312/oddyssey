@@ -6,8 +6,8 @@
     <h2>Featured Games</h2><br>
     <div class="d-flex flex-row gap-3">
         {{-- tinggal loop --}}
-        <a href="" class="text-decoration-none text-dark">
-            <div class="card" style="width: 14rem;">
+        <a href="#" class="text-decoration-none text-dark">
+            <div class="card shadow" style="width: 14rem;">
                 <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -23,19 +23,22 @@
 
     {{-- HOT GAME YANG PALING BANYAK DIBELI LAST WEEK --}}
     <h2>Hot Games</h2><br>
-    <div class="card mb-2" style="max-width: 1700px; height: 120px;">
-        <div class="row g-0">
-            <div class="col-md-2">
-                <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 120px;" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <p>Price</p>
+
+    <a href="#" class="text-decoration-none text-dark">
+        <div class="shadow p-0 mb-3 bg-body rounded">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex">
+                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 120px;" class="img-fluid rounded-start" alt="...">
+                    <div class="m-3">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
-            </div>
+                <div class="m-2">
+                    <h5>IDR 159.000</h5>
+                </div>
+            </div>  
         </div>
-    </div>
+    </a>
 
 @endsection
