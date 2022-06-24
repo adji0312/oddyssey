@@ -29,7 +29,7 @@
           </ul>
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto mx-5">
           {{-- <li class="nav-item">
             <a class="nav-link" href="#">Guest</a>
           </li> --}}
