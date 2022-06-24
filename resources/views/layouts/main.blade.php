@@ -14,7 +14,10 @@
     {{-- My Styles.CSS --}}
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>Oddyssey</title>
+    <title>Oddyssey | Home</title>
+    <link rel = "icon" href = 
+"img/logoproject.png" 
+        type = "image/x-icon">
   </head>
   <body style="background-color: #F3F4F6">
 

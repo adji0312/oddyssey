@@ -16,7 +16,7 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
-            <div class="m-2">
+            <div class="m-2 mx-4">
                 <p class="text-end mb-1">IDR 159.000</p>
                 <div class="d-flex gap-2">
                     <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
