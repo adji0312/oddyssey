@@ -2,12 +2,20 @@
 
 @section('container')
 
-    <div class="d-flex justify-content-center mb-2">
+   <div class="d-flex justify-content-center">
+      <a href="/addGame">
+         <div class="btn btn-dark">
+            ADD NEW GAME
+         </div>
+      </a>
+   </div>  
+
+    {{-- <div class="d-flex justify-content-center mb-2">
         <button class="btn btn-dark m-3 float-center" style="width:160px" type="submit">ADD NEW GAME</button>
-    </div>
+    </div> --}}
 
     {{-- LOOPING SEMUA GAME --}}
-    <div class="shadow p-0 mb-3 bg-body rounded">
+    <div class="shadow p-0 mb-3 mt-3 bg-body rounded">
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex">
                 <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 90px;" class="img-fluid rounded-start" alt="...">

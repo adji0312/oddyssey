@@ -36,7 +36,11 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Guest
+              {{-- @if ($name == null) --}}
+                Guest 
+              {{-- @else --}}
+                {{-- {{ $name }} --}}
+              {{-- @endif --}}
             </a>
             <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/login">Login</a></li>
