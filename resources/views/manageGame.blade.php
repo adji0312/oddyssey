@@ -15,7 +15,7 @@
     </div> --}}
 
     {{-- LOOPING SEMUA GAME --}}
-    <div class="shadow p-0 mb-3 bg-body rounded">
+    <div class="shadow p-0 mb-3 mt-3 bg-body rounded">
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex">
                 <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 90px;" class="img-fluid rounded-start" alt="...">

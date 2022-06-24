@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ManageGameController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ManageGameController;
+use App\Http\Controllers\ManageCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,9 @@ Route::get('/cart', function(){
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+
 Route::get('/manageGame' ,[ManageGameController::class, 'index']);
 Route::get('/addGame' ,[ManageGameController::class, 'add']);
+
+Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
+Route::get('/addCategory', [ManageCategoryController::class, 'add']);

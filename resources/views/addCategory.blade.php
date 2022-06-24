@@ -9,7 +9,7 @@
        <form action="/register" method="post" class="bg-light p-4 rounded">
          @csrf
          <div class="text-center">
-            <p class="text-center fw-bold fs-4">Add Game</p>
+            <p class="text-center fw-bold fs-4">Add Category</p>
           </div>
          <div class="mb-3">
             <input type="title" class="form-control rounded" id="title" placeholder="Title">
@@ -35,6 +35,7 @@
          <div class="mb-3">
             <textarea class="form-control rounded" id="description" rows="3"></textarea>
           </div>
+
 
          <div class="d-flex justify-content-start mt-3 gap-2">
             <div class="fw-bolder">
