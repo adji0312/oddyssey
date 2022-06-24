@@ -24,7 +24,9 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <small class="d-block text-center mt-3 mb-3"><a class="text-decoration-underline text-dark" href="/register">Don't have an account? Register Now!</a></small>
+          <small class="d-block text-center mt-3 mb-3">
+              <a class="text-decoration-underline text-dark" href="/register"> Don't have an account? Register Now!</a>
+          </small>
           <div class="d-flex justify-content-center">
             <button class="btn btn-lg btn-dark" type="submit">LOG IN</button>
           </div>  

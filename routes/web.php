@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,16 +17,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'title' => 'Dashboard' , 
+    ]);
 });
 
 Route::get('/gameDetail', function(){
-    return view('gameDetail');
+    return view('gameDetail', [
+        'title' => 'Detail'
+    ]);
 });
 
 Route::get('/cart', function(){
-    return view('cart');
+    return view('cart', [
+        'title' => 'Cart'
+    ]);
 });
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/manageGame' ,[ManageGameController::class, 'index']);
+Route::get('/addGame' ,[ManageGameController::class, 'add']);
