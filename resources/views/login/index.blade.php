@@ -12,11 +12,16 @@
           @csrf
           <div class="form-floating">
             <p class="mb-0">Email</p>
-            <input type="email" class="form-control rounded" id="floatingInput" placeholder="name@example.com">
+            <div class="mb-3">
+              <input type="email" class="form-control rounded" id="email" placeholder="email">
+            </div>
           </div>
           <div class="form-floating">
             <p class="mb-0 mt-2">Password</p>
-            <input type="password" class="form-control rounded" id="floatingPassword" placeholder="Password">
+            <div class="mb-3">
+              <input type="password" class="form-control rounded" id="password" placeholder="password">
+            </div>
+            {{-- <input type="password" class="form-control rounded" id="floatingPassword" placeholder="Password"> --}}
           </div>
       
           <div class="checkbox mb-3">

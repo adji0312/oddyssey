@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -17,26 +19,16 @@ use App\Http\Controllers\ManageCategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'Dashboard' , 
-    ]);
-});
+Route::get('/', [GameController::class, 'index']);
 
-Route::get('/gameDetail', function(){
-    return view('gameDetail', [
-        'title' => 'Detail'
-    ]);
-});
+Route::get('/game/{game:title}', [GameController::class, 'show']);
 
-Route::get('/cart', function(){
-    return view('cart', [
-        'title' => 'Cart'
-    ]);
-});
+Route::get('/cart', [CartController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/manageGame' ,[ManageGameController::class, 'index']);
 Route::get('/addGame' ,[ManageGameController::class, 'add']);

@@ -5,8 +5,8 @@
         <div class="card position-sticky shadow" style="width: 18rem;">
             <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p><br>
+                <h5 class="card-title">{{ $game->title }}</h5>
+                <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p><br>
                 <a href="#" class="btn btn-dark">ADD TO CART</a>
             </div>
         </div>
@@ -36,35 +36,16 @@
         </div>
     </div>
 
-    {{-- <div class="card-group m-3">
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <h5 class="card-title">Card title</h5>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <h5 class="card-title">Card title</h5>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            <h5 class="card-title">Card title</h5>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="d-flex justify-content-between m-3 bg-white shadow rounded align-items-center">
         <div class="m-3 p-1">
             <p class="card-text mb-0"><small class="text-muted">Genre</small></p>
-            <h5 class="card-title">Card title</h5>
+            @foreach ($category as $c)
+                <h5 class="card-title">{{ $c->title }}</h5>
+            @endforeach
         </div>
         <div class="m-3 p-1">
             <p class="card-text mb-0"><small class="text-muted">Release Date</small></p>
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">20 October 2021</h5>
         </div>
         <div class="m-3 p-1">
             <p class="card-text mb-0"><small class="text-muted">All Reviews</small></p>
@@ -77,10 +58,18 @@
     <h4 class="m-3 mt-4">More Like This</h4>
     <div class="d-flex justify-content-between m-3 mb-4">
         {{-- DISINI TINGGAL LOOPING 3x UNTUK GAME YANG KATEGORI NYA SAMA --}}
-        <div class="text-end">
-            <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="shadow rounded" alt="..." width="350px">
-            <h5 class="card-title mt-2">IDR</h5>
-        </div>
+        @foreach ($games->take(3) as $game)
+            <div class="text-end">
+                <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
+                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="shadow rounded" alt="..." width="350px">
+                </a>
+                @if ($game->price === 0)
+                    <h5 class="card-title mt-2">FREE</h5>
+                @else
+                    <h5 class="card-title mt-2">IDR {{ $game->price }}</h5>
+                @endif    
+            </div>
+        @endforeach
     </div>
     
 
@@ -89,7 +78,7 @@
     <div class="card m-3 shadow" style="width: 68rem;">
         <div class="card-body">
             <h5 class="card-title">Leave a Review!</h5>
-            <form action="" method="post">
+            <form action="/game" method="post">
                 <div class="d-flex">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -100,10 +89,10 @@
                         <label class="form-check-label" for="inlineRadio2">Not Recommended</label>
                     </div>
                 </div>
-
                 <textarea class="mt-2 mb-2" name="" id="" cols="140" rows="5"></textarea>
+                <button class="btn btn-dark" type="submit">POST</button>
             </form>
-            <a href="#" class="btn btn-dark">POST</a>
+            {{-- <a href="#" class="btn btn-dark">POST</a> --}}
         </div>
     </div>
 
@@ -113,7 +102,8 @@
         <div class="card-body">
             <h5 class="card-title">NAMA USER</h5>
             {{-- DI IMG, KASI INDIKATOR, KALAU YANG KOMEN REKOMENDED KASI GAMBAR LIKE, ELSE NOTLIKE --}}
-            <img src="img/like.png" alt="..." width="30px">     Recommended
+            <img src="img/like.png" alt="..." width="30px">
+                 Recommended
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
     </div>

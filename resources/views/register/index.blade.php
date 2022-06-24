@@ -8,47 +8,57 @@
       <div class="text-center">
         <img class="mb-4" src="/img/logoproject.png" alt="" width="72">
       </div>
-      <form action="/register" method="post" class="bg-light p-4 rounded">
+
+      <form action="/register" method="post" class="bg-light p-4 rounded shadow">
         @csrf
         <div class="form-floating">
           <p class="mb-0">Name</p>
-          <input style="height: 15px;" type="text" name="name" class="form-control rounded" id="floatingInput" placeholder="Name">
+          <div class="mb-3">
+            <input type="text" name="name" class="form-control rounded @error('name') is-invalid @enderror" id="name" required value="{{ old('name') }}">
+          </div>
+          @error('name')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="form-floating">
           <p class="mb-0 mt-2">Email</p>
-          <input style="height: 15px;" type="email" name="email" class="form-control rounded" id="floatingInput" placeholder="name@example.com">
+          <div class="mb-3">
+            <input type="email" name="email" class="form-control rounded @error('email') is-invalid @enderror" id="email" required value="{{ old('email') }}">
+          </div>  
+          @error('email')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="form-floating">
           <p class="mb-0 mt-2">Password</p>
-          <input style="height: 15px;" type="password" name="password" class="form-control rounded" id="floatingPassword" placeholder="Password">
+          <div class="mb-3">
+            <input type="password" name="password" class="form-control rounded @error('password') is-invalid @enderror" id="password" required>
+          </div>  
+          @error('password')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="form-floating">
           <p class="mb-0 mt-2">Confirm Password</p>
-          <input style="height: 15px;" type="password" name="confirmpassword" class="form-control rounded" id="floatingPassword" placeholder="ConfirmPassword">
+          <div class="mb-3">
+            <input type="password" name="confirmPassword" class="form-control rounded @error('confirmPassword') is-invalid @enderror" id="confirmPassword" required>
+          </div>  
+          @error('confirmPassword')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
-        <form action="/register" method="post" class="bg-light p-4 rounded shadow">
-          @csrf
-          <div class="form-floating">
-            <p class="mb-0">Name</p>
-            <input style="height: 15px;" type="text" name="name" class="form-control rounded" id="floatingInput" placeholder="Name">
-          </div>
-          <div class="form-floating">
-            <p class="mb-0 mt-2">Email</p>
-            <input style="height: 15px;" type="email" name="email" class="form-control rounded" id="floatingInput" placeholder="name@example.com">
-          </div>
-          <div class="form-floating">
-            <p class="mb-0 mt-2">Password</p>
-            <input style="height: 15px;" type="password" name="password" class="form-control rounded" id="floatingPassword" placeholder="Password">
-          </div>
-          <div class="form-floating">
-            <p class="mb-0 mt-2">Confirm Password</p>
-            <input style="height: 15px;" type="password" name="confirmpassword" class="form-control rounded" id="floatingPassword" placeholder="ConfirmPassword">
-          </div>
-
         <div class="d-flex justify-content-end mt-3 gap-2">
           <small class="d-block text-center mt-3 mb-3"><a class="text-decoration-underline text-dark" href="/login">Already Registered?</a></small>
-          <button class="btn btn-lg btn-dark h-50" type="submit">REGISTER</button>
-        </div>  
+          <button class="btn btn-dark h-50" type="submit">REGISTER</button>
+        </div>
       </form>
     </main>
   </div>

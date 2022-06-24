@@ -6,7 +6,7 @@
    <div class="col-lg-5">
      <main class="form-registration w-100 m-auto">
        
-       <form action="/register" method="post" class="bg-light p-4 rounded">
+       <form action="/register" method="post" class="bg-light p-4 shadow rounded">
          @csrf
          <div class="text-center">
             <p class="text-center fw-bold fs-4">Add Game</p>
