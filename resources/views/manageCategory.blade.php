@@ -3,7 +3,7 @@
 @section('container')
 
    <div class="d-flex justify-content-center">
-      <a href="/addGame">
+      <a href="/addCategory">
          <div class="btn btn-dark">
             ADD CATEGORY
          </div>
@@ -28,5 +28,5 @@
            
         </div>  
     </div>
-    
+
 @endsection
