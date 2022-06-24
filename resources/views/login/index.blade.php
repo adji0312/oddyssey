@@ -8,7 +8,7 @@
         <div class="text-center">
           <img class="mb-4" src="/img/logoproject.png" alt="" width="72">
         </div>
-        <form action="/login" method="post" class="bg-light p-4 rounded">
+        <form action="/login" method="post" class="bg-light p-4 rounded shadow">
           @csrf
           <div class="form-floating">
             <p class="mb-0">Email</p>

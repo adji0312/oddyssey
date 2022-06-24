@@ -16,7 +16,7 @@
 
     <title>Oddyssey | {{ $title }}</title>
   </head>
-  <body>
+  <body style="background-color: #F3F4F6">
 
     @include('partials.navbar')
     
