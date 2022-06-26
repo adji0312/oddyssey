@@ -4,6 +4,20 @@
 
   <div class="row justify-content-center">
     <div class="col-lg-5">
+      @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+
+      @if(session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('loginError') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+
       <main class="form-signin w-100 m-auto">
         <div class="text-center">
           <img class="mb-4" src="/img/logoproject.png" alt="" width="72">
@@ -13,13 +27,18 @@
           <div class="form-floating">
             <p class="mb-0">Email</p>
             <div class="mb-3">
-              <input type="email" class="form-control rounded" id="email" placeholder="email">
+              <input type="email" name="email" class="form-control rounded @error('email') is invalid @enderror" id="email" placeholder="email" autofocus required value="{{ old('email') }}">
             </div>
+            @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
           <div class="form-floating">
             <p class="mb-0 mt-2">Password</p>
             <div class="mb-3">
-              <input type="password" class="form-control rounded" id="password" placeholder="password">
+              <input type="password" name="password" class="form-control rounded" id="password" placeholder="password">
             </div>
             {{-- <input type="password" class="form-control rounded" id="floatingPassword" placeholder="Password"> --}}
           </div>

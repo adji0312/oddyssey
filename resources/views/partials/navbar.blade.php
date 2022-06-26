@@ -30,24 +30,30 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mx-5">
-          {{-- <li class="nav-item">
-            <a class="nav-link" href="#">Guest</a>
-          </li> --}}
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{-- @if ($name == null) --}}
-                Guest 
-              {{-- @else --}}
-                {{-- {{ $name }} --}}
-              {{-- @endif --}}
-            </a>
-            <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/login">Login</a></li>
-              {{-- <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-            </ul>
-          </li>
+          @auth
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 {{ auth()->user()->name }}
+              </a>
+              <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+                <li>
+                  <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </li>
+          @else
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Guest
+              </a>
+              <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+              </ul>
+            </li>
+          @endauth    
       </ul>
     </div>
   </div>

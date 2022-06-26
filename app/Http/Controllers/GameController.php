@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use function PHPSTORM_META\map;
