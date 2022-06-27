@@ -12,7 +12,7 @@
         </div>
 
         {{-- CAROUSEL --}}
-        <div id="carouselExampleControls" class="carousel slide shadow" data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {{-- LOOPING GAMBAR NYA --}}
                 <div class="carousel-item active">
@@ -50,7 +50,7 @@
         <div class="m-3 p-1">
             <p class="card-text mb-0"><small class="text-muted">All Reviews</small></p>
             <p class="mb-0">1 Recommended</p>
-            <p>1 Recommended</p>
+            <p>1 Not Recommended</p>
         </div>
     </div>
     
@@ -98,14 +98,33 @@
 
     {{-- REVIEW SECTION --}}
     {{-- LOOP SEMUA REVIEW DI GAME --}}
-    <div class="card m-3 shadow" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">NAMA USER</h5>
-            {{-- DI IMG, KASI INDIKATOR, KALAU YANG KOMEN REKOMENDED KASI GAMBAR LIKE, ELSE NOTLIKE --}}
-            <img src="img/like.png" alt="..." width="30px">
-                 Recommended
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class="container">
+        <div class="row">
+            @foreach ($reviews as $review)
+                {{-- {{ $review->id }}
+                {{ $review->status }} --}}
+                <div class="col-md-3 mb-4 card m-3 shadow" style="width: 18rem;">
+                    <div class="card-body">
+                        @foreach ($users as $user)
+                            @if ($user->id === $review->userID)
+                                <h5 class="card-title">{{ $user->name }}</h5>
+                            @endif                           
+                        @endforeach
+                        {{-- DI IMG, KASI INDIKATOR, KALAU YANG KOMEN REKOMENDED KASI GAMBAR LIKE, ELSE NOTLIKE --}}
+                        @if ($review->status > 0)
+                            <div class="d-flex gap-2 mb-3">
+                                <img src="/img/like.png" class="" alt="..." width="30px">
+                                Recommended
+                            </div>
+                        @else
+                            <img src="/img/notLike.png" alt="..." width="30px">
+                            Not Recommended    
+                        @endif
+                        <p class="card-text">{{ $review->comment }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-    </div>
+    </div>    
 
 @endsection

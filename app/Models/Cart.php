@@ -9,7 +9,11 @@ class Cart extends Model
 {
     use HasFactory;
 
-    // public function games(){
-    //     return $this->hasMany(Game::class);
-    // }
+    public function games(){
+        return $this->hasMany(Game::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

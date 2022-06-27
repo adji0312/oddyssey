@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class ManageCategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class ManageCategoryController extends Controller
 
         return view('manageCategory', [
             'title' => 'Category' , 
-            'name' => $splitName[0] 
+            'name' => $splitName[0],
+            'categories' => Category::all()
         ]);
 
     }

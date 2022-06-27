@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,9 @@ class GameController extends Controller
             "title" => "Game Detail | ". $game->title,
             "game" => $game,
             "category" => Category::all()->where('id', $game->categoryID),
-            "games" => Game::all()->where('categoryID', $game->categoryID)
+            "games" => Game::all()->where('categoryID', $game->categoryID),
+            "reviews" => Review::all()->where('gameID', $game->id),
+            "users" => User::all()
         ]);
     }
 }

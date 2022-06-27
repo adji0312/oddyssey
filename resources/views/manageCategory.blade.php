@@ -15,18 +15,22 @@
     </div> --}}
 
     {{-- LOOPING SEMUA GAME --}}
-    <div class="shadow p-0 mb-3 mt-3 bg-body rounded">
-        <div class="d-flex justify-content-between align-items-center">
-           
-            <div class="m-3">
-               <h5 class="card-title">Card title</h5>
-            </div>
-            <div class="d-flex gap-2 m-3">
-               <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
-               <button class="w-100 btn btn-danger" type="submit">DELETE</button>
-            </div>
-           
-        </div>  
-    </div>
+    @foreach ($categories as $category)
+      <div class="shadow p-0 mb-3 mt-3 bg-body rounded">
+         <div class="d-flex justify-content-between align-items-center">
+               <div class="m-3">
+                  <h5 class="card-title">{{ $category->title }}</h5>
+               </div>
+               <div class="d-flex gap-2 m-3">
+                  <form action="" method="post">
+                     <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
+                  </form>
+                  <form action="" method="post">
+                     <button class="w-100 btn btn-danger" type="submit">DELETE</button>
+                  </form>
+               </div>
+         </div>  
+      </div>
+    @endforeach
 
 @endsection
