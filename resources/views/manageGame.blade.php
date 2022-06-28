@@ -47,4 +47,7 @@
             </div>  
         </div>
     @endforeach
+    <div class="float-end">
+        {{ $games->links() }}
+    </div>
 @endsection

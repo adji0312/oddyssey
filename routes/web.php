@@ -23,7 +23,7 @@ Route::get('/', [GameController::class, 'index']);
 
 Route::get('/game/{game:title}', [GameController::class, 'show']);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
