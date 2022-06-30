@@ -22,8 +22,10 @@ use App\Http\Controllers\ManageCategoryController;
 Route::get('/', [GameController::class, 'index']);
 
 Route::get('/game/{game:title}', [GameController::class, 'show']);
+Route::post('/game/{game:title}', [GameController::class, 'storeComment'])->middleware('auth');
 
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
+Route::resource('/cart', CartController::class)->middleware('auth');
+Route::post('/cart/{id}', [CartController::class, 'addCart'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);

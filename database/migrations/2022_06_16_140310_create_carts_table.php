@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->foreignId('gameID');
             $table->foreignId('userID');
-            $table->integer('totalPrice');
+            // $table->integer('totalPrice');
             $table->timestamps();
         });
     }

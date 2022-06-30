@@ -1,25 +1,25 @@
 <nav class="navbar navbar-expand-lg mb-4 bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="img/logoproject.png" alt="" width="40px"></a>
+    <a class="navbar-brand" href="/"><img src="/img/logoproject.png" alt="" width="40px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav" >
       <ul class="navbar-nav">
         {{-- <li class="nav-item">
-            <img src="img/logoproject.png" alt="" width="20px">
+            <img src="/img/logoproject.png" alt="" width="40px">
         </li> --}}
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">Dashboard</a>
+          <a class="nav-link {{ ($active === "Dashboard") ? 'border-bottom border-2 border-primary' : '' }}" aria-current="page" href="/">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/cart">Cart</a>
+          <a class="nav-link {{ ($active === "Cart") ? 'border-bottom border-2 border-primary' : '' }}" href="/cart">Cart</a>
         </li>
         {{-- <li class="nav-item">
           <a class="nav-link" href="#">Admin</a>
         </li> --}}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle {{ ($active === "Admin") ? 'border-bottom border-2 border-primary' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Admin
           </a>
           <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Jsonable;
 
 class ManageGameController extends Controller
 {
@@ -15,9 +16,10 @@ class ManageGameController extends Controller
         $splitName = explode(' ',$user->name);
 
         return view('manageGame', [
-            'title' => 'Game' , 
+            'title' => 'Game' ,
+            'active' => 'Admin',  
             'name' => $splitName[0],
-            'games' => Game::paginate(10),
+            'games' => Game::Paginate(10),
             'categories' => Category::all()
         ]);
 

@@ -47,7 +47,8 @@
             </div>  
         </div>
     @endforeach
-    <div class="float-end">
+    Showing {{ $games->firstItem() }} to {{ $games->lastItem() }} of total {{$games->total()}} entries
+    <div class="float-end color-success">
         {{ $games->links() }}
     </div>
 @endsection

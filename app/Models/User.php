@@ -43,15 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function games(){
-        return $this->hasMany(Game::class);
-    }
+    // public function games(){
+    //     return $this->hasMany(Game::class);
+    // }
 
     public function reviews(){
         return $this->hasMany(Review::class);
     }
 
     public function cart(){
-        return $this->belongsTo(Cart::class);
+        return $this->hasOne(Cart::class);
     }
 }

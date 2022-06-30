@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <title>Oddyssey | {{ $title }}</title>
+    <link rel="icon" href="https://sujanbyanjankar.com.np/wp-content/uploads/2020/05/1200px-Laravel.svg_.png" type = "image/x-icon">
   </head>
   <body style="background-color: #F3F4F6">
 

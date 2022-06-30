@@ -14,7 +14,8 @@ class ManageCategoryController extends Controller
         $splitName = explode(' ',$user->name);
 
         return view('manageCategory', [
-            'title' => 'Category' , 
+            'title' => 'Category' ,
+            'active' => 'Admin', 
             'name' => $splitName[0],
             'categories' => Category::all()
         ]);
