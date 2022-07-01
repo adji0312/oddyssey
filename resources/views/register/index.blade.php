@@ -11,6 +11,8 @@
 
       <form action="/register" method="post" class="bg-light p-4 rounded shadow">
         @csrf
+
+        {{-- NAME --}}
         <div class="form-floating">
           <p class="mb-0">Name</p>
           <div class="mb-3">
@@ -22,6 +24,8 @@
             </div>
           @enderror
         </div>
+
+        {{-- EMAIL --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Email</p>
           <div class="mb-3">
@@ -33,6 +37,8 @@
             </div>
           @enderror
         </div>
+
+        {{-- PASSWORD --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Password</p>
           <div class="mb-3">
@@ -44,6 +50,8 @@
             </div>
           @enderror
         </div>
+
+        {{-- CONFIRM PASSWORD --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Confirm Password</p>
           <div class="mb-3">
@@ -55,10 +63,13 @@
             </div>
           @enderror
         </div>
+
+        {{-- BUTTON REGISTER --}}
         <div class="d-flex justify-content-end mt-3 gap-2">
           <small class="d-block text-center mt-3 mb-3"><a class="text-decoration-underline text-dark" href="/login">Already Registered?</a></small>
           <button class="btn btn-dark h-50" type="submit">REGISTER</button>
         </div>
+        
       </form>
     </main>
   </div>

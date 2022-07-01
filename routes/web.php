@@ -36,6 +36,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/manageGame' ,[ManageGameController::class, 'index']);
 Route::get('/addGame' ,[ManageGameController::class, 'add']);
+Route::post('/addGame', [ManageGameController::class, 'store']);
+
 
 Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
 Route::get('/addCategory', [ManageCategoryController::class, 'add']);
+Route::post('/addCategory', [ManageCategoryController::class, 'store']);
