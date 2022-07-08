@@ -23,6 +23,21 @@ class GameController extends Controller
         ]);
     }
 
+    public function searchview(){
+
+        $games = Game::latest();
+        if(request('search')){
+            $games->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        return view('searchGame', [
+            "title" => "All Games",
+            "active" => "Dashboard",
+            "games" => $games->paginate(15),
+            "categories" => Category::all()
+        ]);
+    }
+
     public function show(Game $game){
         return view('game', [
             "title" => "Game Detail | ". $game->title,

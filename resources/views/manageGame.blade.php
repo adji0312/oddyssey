@@ -47,7 +47,9 @@
             </div>  
         </div>
     @endforeach
-    Showing {{ $games->firstItem() }} to {{ $games->lastItem() }} of total {{$games->total()}} entries
+    <div class="mb-3">
+        Showing {{ $games->firstItem() }} to {{ $games->lastItem() }} of total {{$games->total()}} entries
+    </div>    
     <div class="float-end color-success">
         {{ $games->links() }}
     </div>

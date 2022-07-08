@@ -24,7 +24,8 @@ class ManageCategoryController extends Controller
 
     public function add(){
         return view('addCategory', [
-            'title' => 'Add Category' 
+            'title' => 'Add Category',
+            'active' => 'Admin', 
         ]);
     }
 

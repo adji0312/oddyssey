@@ -66,7 +66,27 @@
             </div>
         </div>
 
-        <button class="btn btn-dark float-end m-3" style="width:120px" type="submit">CHECKOUT</button>
+        <button class="btn btn-dark float-end m-3" style="width:120px" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CHECKOUT</button>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">CHECKOUT</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                        <form method="post" action="/">
+                            <button type="button" class="btn btn-dark">Yes</button>
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
     @else
         <div class="text-center">
             <h1 class="card-title mb-4">Your Cart is Empty!</h1>

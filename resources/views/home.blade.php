@@ -2,6 +2,17 @@
 
 @section('container')
 
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form action="/searchGame">
+                <div class="d-flex gap-1 mb-3">
+                    <input type="text" class="form-control" placeholder="Search" name="search">
+                    <button class="btn text-white" style="background-color: #374151" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     {{-- FEATURED GAME UNTUK GAME YANG DAPAT POSITIVE REVIEW PALING BANYANK --}}
     <h2>Featured Games</h2><br>
     <div class="d-flex flex-row gap-2">

@@ -16,7 +16,7 @@ class ManageGameController extends Controller
         $splitName = explode(' ',$user->name);
 
         return view('manageGame', [
-            'title' => 'Game' ,
+            'title' => 'Manage Game' ,
             'active' => 'Admin',  
             'name' => $splitName[0],
             'games' => Game::Paginate(10),
@@ -27,7 +27,8 @@ class ManageGameController extends Controller
 
     public function add(){
         return view('addGame', [
-            'title' => 'Add Game' 
+            'title' => 'Add Game',
+            'active' => 'Admin', 
         ]);
     }
 

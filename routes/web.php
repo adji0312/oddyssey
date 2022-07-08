@@ -20,6 +20,7 @@ use App\Http\Controllers\ManageCategoryController;
 */
 
 Route::get('/', [GameController::class, 'index']);
+Route::get('/searchGame', [GameController::class, 'searchview']);
 
 Route::get('/game/{game:title}', [GameController::class, 'show']);
 Route::post('/game/{game:title}', [GameController::class, 'storeComment'])->middleware('auth');
@@ -34,11 +35,26 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/manageGame' ,[ManageGameController::class, 'index']);
-Route::get('/addGame' ,[ManageGameController::class, 'add']);
-Route::post('/addGame', [ManageGameController::class, 'store']);
+// Route::get('/manageGame' ,[ManageGameController::class, 'index']);
+// Route::get('/addGame' ,[ManageGameController::class, 'add']);
+// Route::post('/addGame', [ManageGameController::class, 'store']);
 
 
-Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
-Route::get('/addCategory', [ManageCategoryController::class, 'add']);
-Route::post('/addCategory', [ManageCategoryController::class, 'store']);
+// Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
+// Route::get('/addCategory', [ManageCategoryController::class, 'add']);
+
+Route::get('/transaction', function(){
+    return view('transaction', [
+        'title' => 'Transaction',
+        'active' => 'Cart'
+    ]);
+});
+
+//ROUTE GROUP
+Route::group(['middleware' => ['auth', 'rolecheck:admin']], function(){
+    Route::get('/manageGame' ,[ManageGameController::class, 'index']);
+    Route::get('/addGame' ,[ManageGameController::class, 'add']);
+    Route::post('/addGame', [ManageGameController::class, 'store']);
+    Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
+    Route::get('/addCategory', [ManageCategoryController::class, 'add']);
+});
