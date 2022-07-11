@@ -68,7 +68,7 @@
 
          {{-- THUMBNAIL --}}
          <div class="mb-3">
-           <label for="thumbnail" class="form-label">Thumbnail</label>
+            <label for="thumbnail" class="form-label">Thumbnail</label>
             <input class="form-control rounded" type="file" id="thumbnail" name="thumbnail">
          </div>
 
