@@ -21,8 +21,8 @@ class CreateGamesTable extends Migration
             $table->string('thumbnail');
             $table->string('slidesPicture');
             $table->integer('price');
-            // $table->integer('recommendedReview');
-            // $table->integer('notRecommendedReview');
+            $table->integer('recommendedReview');
+            $table->integer('notRecommendedReview');
             $table->timestamps();
         });
     }

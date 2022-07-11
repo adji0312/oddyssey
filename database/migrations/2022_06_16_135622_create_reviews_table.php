@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->foreignId('userID');
             $table->foreignId('gameID');
-            $table->integer('status');
+            $table->string('status');
             $table->text('comment');
             $table->timestamps();
         });

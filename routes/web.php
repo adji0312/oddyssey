@@ -23,7 +23,7 @@ Route::get('/', [GameController::class, 'index']);
 Route::get('/searchGame', [GameController::class, 'searchview']);
 
 Route::get('/game/{game:title}', [GameController::class, 'show']);
-Route::post('/game/{game:title}', [GameController::class, 'storeComment'])->middleware('auth');
+Route::post('/game/{id}', [GameController::class, 'storeComment'])->middleware('auth');
 
 Route::resource('/cart', CartController::class)->middleware('auth');
 Route::post('/cart/{id}', [CartController::class, 'addCart'])->middleware('auth');

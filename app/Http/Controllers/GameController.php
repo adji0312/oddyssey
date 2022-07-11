@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use function PHPSTORM_META\map;
 
@@ -19,7 +20,8 @@ class GameController extends Controller
             "title" => "All Games",
             "active" => "Dashboard",
             "games" => Game::all(),
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            "reviews" => Review::all()
         ]);
     }
 
@@ -50,17 +52,27 @@ class GameController extends Controller
         ]);
     }
 
-    public function storeComment(Request $request, Game $game){
-        // $validatedData = $request->validate([
-        //     'status' => 'required',
-        //     'comment' => 'required'
-        // ]);
+    public function storeComment(Request $request, $id){
+        // dd($game);
+        $review = new review;
+        $game = Game::find($id);
+        $review->userID = auth()->user()->id;
+        $review->gameID = $game->id;
+        $review->status = $request['status'];
+        $review->comment = $request['comment'];
+        $review->save();
 
-        // $validatedData['userID'] = auth()->user()->id;
-        // $validatedData['gameID'] = $game->id;
+        if($review->status == "recommended"){
+            DB::table('games')
+                ->where('id', $game->id)
+                ->update(['recommendedReview'  => DB::raw('recommendedReview + 1')]);
+        }
+        else{
+            DB::table('games')
+                ->where('id', $game->id)
+                ->update(['notRecommendedReview'  => DB::raw('notRecommendedReview + 1')]);
+        }
 
-        // Review::create($validatedData);
-        // return redirect('/game/{game:title}');
-        dd($request);
+        return redirect()->back();
     }
 }

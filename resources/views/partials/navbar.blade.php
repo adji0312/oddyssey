@@ -33,7 +33,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  {{ auth()->user()->name }}
               </a>
-              <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                 <li>
                   <form action="/logout" method="post">
                     @csrf
@@ -47,7 +47,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Guest
               </a>
-              <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/login">Login</a></li>
               </ul>
             </li>

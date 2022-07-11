@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-    {{-- {{ $game }} --}}
     <div class="d-flex m-3 justify-content-between">
         <div class="card position-sticky shadow" style="width: 18rem;">
             <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
@@ -54,8 +53,8 @@
         </div>
         <div class="m-3 p-1">
             <p class="card-text mb-0"><small class="text-muted">All Reviews</small></p>
-            <p class="mb-0">1 Recommended</p>
-            <p>1 Not Recommended</p>
+            <p class="mb-0">{{ $game->recommendedReview }} Recommended</p>
+            <p>{{ $game->notRecommendedReview }} Not Recommended</p>
         </div>
     </div>
     
@@ -64,15 +63,15 @@
     <h4 class="m-3 mt-4">More Like This</h4>
     <div class="d-flex justify-content-between m-3 mb-4">
         {{-- DISINI TINGGAL LOOPING 3x UNTUK GAME YANG KATEGORI NYA SAMA --}}
-        @foreach ($games->take(3) as $game)
+        @foreach ($games->take(3) as $g)
             <div class="text-end">
-                <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
+                <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark">
                     <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="shadow rounded" alt="..." width="350px">
                 </a>
-                @if ($game->price === 0)
+                @if ($g->price === 0)
                     <h5 class="card-title mt-2">FREE</h5>
                 @else
-                    <h5 class="card-title mt-2">IDR {{ $game->price }}</h5>
+                    <h5 class="card-title mt-2">IDR {{ $g->price }}</h5>
                 @endif    
             </div>
         @endforeach
@@ -84,14 +83,15 @@
     <div class="card m-3 shadow" style="width: 68rem;">
         <div class="card-body">
             <h5 class="card-title">Leave a Review!</h5>
-            <form action="/game/{{ $game->title }}" method="post">
+            <form action="{{ url('game', $game->id) }}" method="post">
+                @csrf
                 <div class="d-flex">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" id="recommended">
+                        <input class="form-check-input" type="radio" name="status" value="recommended">
                         <label class="form-check-label" for="inlineRadio1">Recommended</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" id="notRecommended">
+                        <input class="form-check-input" type="radio" name="status" value="notRecommended">
                         <label class="form-check-label" for="inlineRadio2">Not Recommended</label>
                     </div>
                 </div>
@@ -101,7 +101,6 @@
                 @enderror
                 <button class="btn btn-dark" type="submit">POST</button>
             </form>
-            {{-- <a href="#" class="btn btn-dark">POST</a> --}}
         </div>
     </div>
 
@@ -110,8 +109,6 @@
     <div class="container">
         <div class="row">
             @foreach ($reviews as $review)
-                {{-- {{ $review->id }}
-                {{ $review->status }} --}}
                 <div class="col-md-3 mb-4 card m-3 shadow" style="width: 18rem;">
                     <div class="card-body">
                         @foreach ($users as $user)
@@ -120,7 +117,7 @@
                             @endif                           
                         @endforeach
                         {{-- DI IMG, KASI INDIKATOR, KALAU YANG KOMEN REKOMENDED KASI GAMBAR LIKE, ELSE NOTLIKE --}}
-                        @if ($review->status > 0)
+                        @if ($review->status == "recommended")
                             <div class="d-flex gap-2 mb-3">
                                 <img src="/img/like.png" class="" alt="..." width="30px">
                                 Recommended
