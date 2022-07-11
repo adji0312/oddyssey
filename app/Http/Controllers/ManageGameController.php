@@ -27,8 +27,8 @@ class ManageGameController extends Controller
 
     public function add(){
         return view('addGame', [
-            'title' => 'Add Game',
-            'active' => 'Admin', 
+            'title' => 'Add Game' ,
+            'active' => 'Admin'
         ]);
     }
 
@@ -39,27 +39,27 @@ class ManageGameController extends Controller
             'price' => 'required|numeric' ,
             'thumbnail' => 'required|mimes:png,jpg,jpeg,svg' , 
             'slidesPicture' => 'required|min:3' ,
-            'slidesPicture.*' => 'required|mimes:png,jpg,jpeg,svg' , 
+            'slidesPicture.*.' => 'mimes:jpg,jpeg,svg,png' , 
             'description' => 'required'
         ]);
 
         dd($request->all());
 
 
-        $validatedData['slidesPicture']->implode('slidesPicture', ',');
+        // $validatedData['slidesPicture']->implode('slidesPicture', ',');
 
-        if($request->hasFile('slidesPicture')){
-            $count = 0 ;
-            foreach($request->file('slidesPicture') as $image){
-                $name = 'slides'.$count.'.'.$image->getClientOriginalExtension() ;
-                $count += 1 ;
-                dd($name);
-                dd($request->all());
-                $image->move(public_path().'/images/'.$request->title , $name); 
-            }
-        }else{
-            dd($request->all());
-        }
+        // if($request->hasFile('slidesPicture')){
+        //     $count = 0 ;
+        //     foreach($request->file('slidesPicture') as $image){
+        //         $name = 'slides'.$count.'.'.$image->getClientOriginalExtension() ;
+        //         $count += 1 ;
+        //         dd($name);
+        //         dd($request->all());
+        //         $image->move(public_path().'/images/'.$request->title , $name); 
+        //     }
+        // }else{
+        //     dd($request->all());
+        // }
 
         // $request->
 
