@@ -19,7 +19,8 @@ class GameController extends Controller
         return view('home', [
             "title" => "All Games",
             "active" => "Dashboard",
-            "games" => Game::all(),
+            "games" => Game::all()->sortByDesc('recommendedReview'),
+            "hotGames" => Game::all()->sortByDesc('recommendedReview'), //untuk hot game sort by date (7)
             "categories" => Category::all(),
             "reviews" => Review::all()
         ]);
