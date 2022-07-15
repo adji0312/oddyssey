@@ -6,10 +6,11 @@
    <div class="col-lg-5">
      <main class="form-registration w-100 m-auto">
        
-       <form action="/addCategory" method="post" class="bg-light p-4 shadow rounded">
+       <form action="{{ url('manageCategory/updateCategory/'.$newCategory['id']) }}" method="post" class="bg-light p-4 shadow rounded">
+         @method('put')
          @csrf
          <div class="text-center">
-            <p class="text-center fw-bold fs-4">Add Category</p>
+            <p class="text-center fw-bold fs-4">Update Category</p>
           </div>
 
          <div class="mb-3">
@@ -18,7 +19,7 @@
          
          <div class="d-flex justify-content-start mt-3 gap-2">
             <div class="fw-bolder">
-               <button class="btn btn-sm btn-dark font-bolder" type="submit">ADD CATEGORY</button>
+               <button class="btn btn-sm btn-dark font-bolder" type="submit">UPDATE CATEGORY</button>
             </div>
          </div>  
        </form>

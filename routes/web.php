@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\ManageCategoryController;
+use PharIo\Manifest\ManifestDocument;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,14 @@ Route::group(['middleware' => ['auth', 'rolecheck:admin']], function(){
     Route::get('/manageGame' ,[ManageGameController::class, 'index']);
     Route::get('/addGame' ,[ManageGameController::class, 'add']);
     Route::post('/addGame', [ManageGameController::class, 'store']);
+
     Route::get('/manageCategory', [ManageCategoryController::class, 'index']);
     Route::get('/addCategory', [ManageCategoryController::class, 'add']);
+    Route::post('/addCategory', [ManageCategoryController::class, 'store']);
+
+    Route::get('/manageCategory/updateCategory/{id}',[ManageCategoryController::class, 'edit']);
+    Route::put('/manageCategory/updateCategory/{id}',[ManageCategoryController::class, 'update']);
+
+    // Route::get('/manageCategory/delete',[ManageCategoryController::class, 'delete']);
+    Route::get('/manageCategory/delete/{id}',[ManageCategoryController::class, 'destroy']);
 });

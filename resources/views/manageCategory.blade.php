@@ -22,12 +22,16 @@
                   <h5 class="card-title">{{ $category->title }}</h5>
                </div>
                <div class="d-flex gap-2 m-3">
-                  <form action="" method="post">
-                     <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
-                  </form>
-                  <form action="" method="post">
-                     <button class="w-100 btn btn-danger" type="submit">DELETE</button>
-                  </form>
+                  {{-- <form action="updateCategory" method="post"> --}}
+                     <a href="/manageCategory/updateCategory/{{ $category->id }}">
+                        <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
+                     </a>
+                  {{-- </form> --}}
+                  {{-- <form action="" method="post"> --}}
+                     <a href="/manageCategory/delete/{{ $category->id }}">
+                        <button class="w-100 btn btn-danger " type="submit">DELETE</button>
+                     </a>
+                  {{-- </form> --}}
                </div>
          </div>  
       </div>
