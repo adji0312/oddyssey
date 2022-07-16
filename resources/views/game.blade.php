@@ -45,21 +45,21 @@
 
 
     {{-- DETAIL GAME + TOTAL REVIEW SECTION --}}
-    <div class="d-flex justify-content-between m-3 bg-white shadow rounded align-items-center">
-        <div class="m-3 p-1">
-            <p class="card-text mb-0"><small class="text-muted">Genre</small></p>
+    <div class="d-flex m-3 bg-white shadow rounded row">
+        <div class="mt-3 mb-4 col-4">
+            <p class="card-text ms-4"><small class="text-muted">Genre</small></p>
             @foreach ($category as $c)
-                <h5 class="card-title">{{ $c->title }}</h5>
+                <h5 class="card-title ms-4">{{ $c->title }}</h5>
             @endforeach
         </div>
-        <div class="m-3 p-1">
-            <p class="card-text mb-0"><small class="text-muted">Release Date</small></p>
-            <h5 class="card-title">20 October 2021</h5>
+        <div class="mt-3 col-4">
+            <p class="card-text ms-4"><small class="text-muted">Release Date</small></p>
+            <h5 class="card-title ms-4">20 October 2021</h5>
         </div>
-        <div class="m-3 p-1">
-            <p class="card-text mb-0"><small class="text-muted">All Reviews</small></p>
-            <p class="mb-0">{{ $game->recommendedReview }} Recommended</p>
-            <p>{{ $game->notRecommendedReview }} Not Recommended</p>
+        <div class="mt-3  col-4">
+            <p class="card-text ms-4"><small class="text-muted">All Reviews</small></p>
+            <p class="ms-4">{{ $game->recommendedReview }} Recommended</p>
+            <p class="ms-4">{{ $game->notRecommendedReview }} Not Recommended</p>
         </div>
     </div>
     
