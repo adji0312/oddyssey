@@ -1,9 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="d-flex m-3 justify-content-between">
-        <div class="card position-sticky shadow" style="width: 18rem;">
-            <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
+
+{{--  --}}
+    <div class="d-flex m-3 row">
+        <div class="card position-sticky shadow col-4" >
+            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top img-fluid" alt="..." >
             <div class="card-body">
                 <h5 class="card-title">{{ $game->title }}</h5>
                 <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p><br>
@@ -15,17 +17,17 @@
         </div>
 
         {{-- CAROUSEL --}}
-        <div id="carouselExampleControls" class="carousel slide card" data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide col-8" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {{-- LOOPING GAMBAR NYA --}}
                 <div class="carousel-item active">
-                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="d-block rounded" alt="..." width="700px">
+                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
                 </div>
                 <div class="carousel-item">
-                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="d-block rounded" alt="..." width="700px">
+                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
                 </div>
                 <div class="carousel-item">
-                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="d-block rounded" alt="..." width="700px">
+                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -38,6 +40,9 @@
             </button>
         </div>
     </div>
+
+    {{--  --}}
+
 
     {{-- DETAIL GAME + TOTAL REVIEW SECTION --}}
     <div class="d-flex justify-content-between m-3 bg-white shadow rounded align-items-center">
@@ -63,18 +68,21 @@
     <h4 class="m-3 mt-4">More Like This</h4>
     <div class="d-flex justify-content-between m-3 mb-4">
         {{-- DISINI TINGGAL LOOPING 3x UNTUK GAME YANG KATEGORI NYA SAMA --}}
-        @foreach ($games->take(3) as $g)
-            <div class="text-end">
-                <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark">
-                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="shadow rounded" alt="..." width="350px">
-                </a>
-                @if ($g->price === 0)
-                    <h5 class="card-title mt-2">FREE</h5>
-                @else
-                    <h5 class="card-title mt-2">IDR {{ $g->price }}</h5>
-                @endif    
-            </div>
+        @foreach ($games->take(3)->where('title','!=',$game->title) as $g)
+            {{-- @if ($game->id != $g->id) --}}
+                <div class="text-end">
+                    <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark">
+                        <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" class="shadow rounded" alt="..." width="350px">
+                    </a>
+                    @if ($g->price === 0)
+                        <h5 class="card-title mt-2">FREE</h5>
+                    @else
+                        <h5 class="card-title mt-2">IDR {{ $g->price }}</h5>
+                    @endif    
+                </div>
+            {{-- @endif --}}
         @endforeach
+        {{-- {{ dd($games->take(3)->where('title','!=',$game->title)) ;  }} --}}
     </div>
     
 

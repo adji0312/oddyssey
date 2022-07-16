@@ -24,7 +24,7 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 0,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 3
+                "notRecommendedReview" => 0
             ] , 
             [   
                 "id" => 2 , 
@@ -34,8 +34,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 80999,
-                "recommendedReview" => 1,
-                "notRecommendedReview" => 1 
+                "recommendedReview" => 2,
+                "notRecommendedReview" => 0 
             ] , 
             [   
                 "id" => 3 , 
@@ -45,7 +45,7 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 60749,
-                "recommendedReview" => 5,
+                "recommendedReview" => 2,
                 "notRecommendedReview" => 0 
             ] , 
             [   
@@ -57,7 +57,7 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 229999,
                 "recommendedReview" => 1,
-                "notRecommendedReview" => 8
+                "notRecommendedReview" => 1
             ] , 
             [   
                 "id" => 5 , 
@@ -67,8 +67,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 69999,
-                "recommendedReview" => 10,
-                "notRecommendedReview" => 1
+                "recommendedReview" => 2,
+                "notRecommendedReview" => 0
             ] , 
             [   
                 "id" => 6 , 
@@ -79,7 +79,7 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 390000,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 4
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 7 , 
@@ -89,8 +89,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 53999,
-                "recommendedReview" => 1,
-                "notRecommendedReview" => 1
+                "recommendedReview" => 2,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 8 , 
@@ -100,8 +100,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 53999,
-                "recommendedReview" => 5,
-                "notRecommendedReview" => 5
+                "recommendedReview" => 2,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 9 , 
@@ -111,8 +111,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 69999,
-                "recommendedReview" => 1,
-                "notRecommendedReview" => 1
+                "recommendedReview" => 2,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 10 , 
@@ -122,7 +122,7 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 161999,
-                "recommendedReview" => 8,
+                "recommendedReview" => 2,
                 "notRecommendedReview" => 3
             ]  ,
             [   
@@ -133,8 +133,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 188999,
-                "recommendedReview" => 7,
-                "notRecommendedReview" => 3
+                "recommendedReview" => 1,
+                "notRecommendedReview" => 1
             ]  ,
             [   
                 "id" => 12 , 
@@ -144,8 +144,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 119999,
-                "recommendedReview" => 2,
-                "notRecommendedReview" => 3
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 14 , 
@@ -155,8 +155,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 309000,
-                "recommendedReview" => 3,
-                "notRecommendedReview" => 2
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 15 , 
@@ -166,8 +166,8 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 309000,
-                "recommendedReview" => 1,
-                "notRecommendedReview" => 3
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0
             ]  ,
             [   
                 "id" => 16 , 
@@ -177,9 +177,20 @@ class GameSeeder extends Seeder
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 0,
-                "recommendedReview" => 12,
-                "notRecommendedReview" => 7
-            ]  ,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0
+            ]  , 
+            [   
+                "id" => 17 , 
+                "categoryID" => 5 , 
+                "title" => "Super Impossible Road copy" , 
+                "description" => "The Cycle: Frontier is a free-to-play PvPvE Extraction Shooter driven by suspense and danger. Prospect for resources and other riches on an abandoned alien world ravaged by a deadly storm, inhabited by monsters and other ambitious Prospectors." , 
+                "thumbnail" => "thumbnail.jpg" , 
+                "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
+                "price" => 0,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0
+            ]  
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -36,7 +37,17 @@ class ManageCategoryController extends Controller
             'title' => 'required'
         ]);
 
-        Category::create($validatedData);
+        // ga bole duplicate 
+        try {
+            Category::create($validatedData);
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];          
+            if($errorCode == 1062){
+                return redirect('/manageCategory')->with('error', 'Category Already Exist! Please Try again');   
+            }
+        }
+        
+            
         return redirect('/manageCategory')->with('success', 'Category Added Successfully!');
     }
 
