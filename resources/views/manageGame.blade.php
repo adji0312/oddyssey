@@ -19,7 +19,7 @@
         <div class="shadow p-0 mb-3 mt-3 bg-body rounded">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex">
-                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 90px;" class="img-fluid rounded-start" alt="...">
+                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 90px;" class="img-fluid rounded-start" alt="...">
                     <div class="m-3">
                         <h5 class="card-title">{{ $game->title }}</h5>
                         @foreach ($categories as $category)
@@ -36,9 +36,9 @@
                         <p class="text-end mb-1">IDR {{ $game->price }}</p>
                     @endif
                     <div class="d-flex gap-2">
-                        <form action="" method="post">
+                        <a href="/manageGame/updateGame/{{ $game->id }}">
                             <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
-                        </form>
+                        </a>
                         <form action="" method="post">
                             <button class="w-100 btn btn-danger" type="submit">DELETE</button>
                         </form>    
