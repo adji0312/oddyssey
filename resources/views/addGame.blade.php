@@ -74,8 +74,8 @@
 
          {{-- SLIDER --}}
          <div class="mb-3">
-            <label for="slidesPicture[]" class="form-label">Slider</label>
-            <input class="form-control rounded" type="file" id="slidesPicture[]" multiple name="slidesPicture[]">
+            <label for="slides" class="form-label">Slider</label>
+            <input class="form-control rounded" type="file" id="slides" name="slides[]" multiple>
          </div>
 
          {{-- DESCRIPTION --}}

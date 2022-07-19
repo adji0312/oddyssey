@@ -20,15 +20,13 @@
         <div id="carouselExampleControls" class="carousel slide col-8" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {{-- LOOPING GAMBAR NYA --}}
-                <div class="carousel-item active">
-                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="d-block rounded img-fluid" alt="..." >
-                </div>
+                {{-- {{ dd($slides); }} --}}
+                @foreach ($slides as $slide)
+                    <div class="carousel-item active">
+                        <img src="/storage/image/{{ $game->title }}/{{ $slide }}" class="d-block rounded img-fluid" alt="..." >
+                    </div>
+                @endforeach
+                
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,12 +52,12 @@
         </div>
         <div class="mt-3 col-4">
             <p class="card-text ms-4"><small class="text-muted">Release Date</small></p>
-            <h5 class="card-title ms-4">20 October 2021</h5>
+            <h5 class="card-title ms-4">{{ $game->created_at->format('d M, Y') }}</h5>
         </div>
         <div class="mt-3 col-4">
             <p class="card-text ms-4"><small class="text-muted">All Reviews</small></p>
-            <p class="ms-4 mb">{{ $game->recommendedReview }} Recommended</p>
-            <p class="ms-4">{{ $game->notRecommendedReview }} Not Recommended</p>
+            <p class="ms-4 mb-0">{{ $game->recommendedReview }} Recommended</p>
+            <p class="ms-4 mb-4">{{ $game->notRecommendedReview }} Not Recommended</p>
         </div>
     </div>
     
@@ -68,11 +66,11 @@
     <h4 class="m-3 mt-4">More Like This</h4>
     <div class="d-flex justify-content-start gap-5 m-3 mb-4">
         {{-- DISINI TINGGAL LOOPING 3x UNTUK GAME YANG KATEGORI NYA SAMA --}}
-        @foreach ($games->take(3)->where('title','!=',$game->title) as $g)
+        @foreach ($games->take(4)->where('title','!=',$game->title) as $g)
             {{-- @if ($game->id != $g->id) --}}
                 <div class="text-end">
                     <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark">
-                        <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" class="shadow rounded" alt="..." width="350px">
+                        <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" class="shadow rounded" alt="..." width="390px">
                     </a>
                     @if ($g->price === 0)
                         <h5 class="card-title mt-2">FREE</h5>
@@ -82,7 +80,7 @@
                 </div>
             {{-- @endif --}}
         @endforeach
-        {{-- {{ dd($games->take(3)->where('title','!=',$game->title)) ;  }} --}}
+        {{-- {{ dd($games->take(4)->where('title','!=',$game->title)) ;  }} --}}
     </div>
     
 

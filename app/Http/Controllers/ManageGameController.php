@@ -12,17 +12,13 @@ use Illuminate\Contracts\Support\Jsonable;
 class ManageGameController extends Controller
 {
     public function index(User $user){
-
-        $splitName = explode(' ',$user->name);
-
         return view('manageGame', [
             'title' => 'Manage Game' ,
             'active' => 'Admin',  
-            'name' => $splitName[0],
+            'name' => $user->name,
             'games' => Game::Paginate(10),
             'categories' => Category::all()
         ]);
-
     }
 
     public function add(){
@@ -33,17 +29,36 @@ class ManageGameController extends Controller
     }
 
     public function store(Request $request){
-        $validatedData = $request->validate([
-            'category' => 'required',
+
+        // $arr = array();
+
+        // foreach ($request->slides as $slide) {
+        //     array_push($arr, $slide->extension());
+        // }
+
+        // dd($arr);
+
+        // $request->slides = $arr ; 
+        
+        // $arr = implode(',', $arr);
+
+        // dd($request->slides);
+
+    
+        $request->validate([
             'title' => 'required',
+            'category' => 'required',
             'price' => 'required|numeric' ,
             'thumbnail' => 'required|mimes:png,jpg,jpeg,svg' , 
-            'slidesPicture' => 'required|min:3' ,
-            'slidesPicture.*.' => 'mimes:jpg,jpeg,svg,png' , 
+            'slides' => 'required|min:3' ,
+            'slides.*' => 'required|mimes:png,jpg,jpeg,svg' , 
             'description' => 'required'
         ]);
 
-        dd($request->all());
+        // $allSlides = $request->file('slides.0') ; 
+        // $validatedData['slidesPicture'] = implode(',',$request->slides);
+
+        // dd($validatedData);
 
 
         // $validatedData['slidesPicture']->implode('slidesPicture', ',');

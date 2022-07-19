@@ -9,6 +9,8 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'] ; 
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -19,5 +21,9 @@ class Game extends Model
 
     public function cart(){
         return $this->belongsTo(Cart::class);
+    }
+
+    public function slides(){
+        return $this->hasMany(Slide::class);
     }
 }

@@ -24,7 +24,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 0,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ] , 
             [   
                 "id" => 2 , 
@@ -35,7 +37,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 80999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0 
+                "notRecommendedReview" => 0 ,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ] , 
             [   
                 "id" => 3 , 
@@ -46,7 +50,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 60749,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0 
+                "notRecommendedReview" => 0 ,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ] , 
             [   
                 "id" => 4 , 
@@ -57,7 +63,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 229999,
                 "recommendedReview" => 1,
-                "notRecommendedReview" => 1
+                "notRecommendedReview" => 1,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ] , 
             [   
                 "id" => 5 , 
@@ -68,7 +76,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 69999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ] , 
             [   
                 "id" => 6 , 
@@ -79,7 +89,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 390000,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 7 , 
@@ -90,7 +102,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 53999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 8 , 
@@ -101,7 +115,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 53999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 9 , 
@@ -112,7 +128,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 69999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 10 , 
@@ -123,7 +141,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 161999,
                 "recommendedReview" => 2,
-                "notRecommendedReview" => 3
+                "notRecommendedReview" => 3,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 11 , 
@@ -134,7 +154,9 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 188999,
                 "recommendedReview" => 1,
-                "notRecommendedReview" => 1
+                "notRecommendedReview" => 1,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
                 "id" => 12 , 
@@ -145,10 +167,12 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 119999,
                 "recommendedReview" => 0,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
-                "id" => 14 , 
+                "id" => 13 , 
                 "categoryID" => 5 , 
                 "title" => "Redout 2" , 
                 "description" => "The fastest racing game in the universe. Redout 2 is a tribute to classic arcade racing games and the sequel to the critically acclaimed Redout, where racing through the dystopian wastelands of a semi-abandoned Earth is one of the galaxy’s most popular sports." , 
@@ -156,10 +180,12 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 309000,
                 "recommendedReview" => 0,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
-                "id" => 15 , 
+                "id" => 14 , 
                 "categoryID" => 5 , 
                 "title" => "Super Impossible Road" , 
                 "description" => "Winning is Cheating in this futuristic racing game in which the only way to get ahead is by making your own shortcuts." , 
@@ -167,10 +193,12 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 309000,
                 "recommendedReview" => 0,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  ,
             [   
-                "id" => 16 , 
+                "id" => 15 , 
                 "categoryID" => 5 , 
                 "title" => "The Cycle Frontier" , 
                 "description" => "The Cycle: Frontier is a free-to-play PvPvE Extraction Shooter driven by suspense and danger. Prospect for resources and other riches on an abandoned alien world ravaged by a deadly storm, inhabited by monsters and other ambitious Prospectors." , 
@@ -178,19 +206,76 @@ class GameSeeder extends Seeder
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 0,
                 "recommendedReview" => 0,
-                "notRecommendedReview" => 0
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ]  , 
             [   
-                "id" => 17 , 
-                "categoryID" => 5 , 
-                "title" => "Super Impossible Road copy" , 
-                "description" => "The Cycle: Frontier is a free-to-play PvPvE Extraction Shooter driven by suspense and danger. Prospect for resources and other riches on an abandoned alien world ravaged by a deadly storm, inhabited by monsters and other ambitious Prospectors." , 
+                "id" => 16 , 
+                "categoryID" => 1 , 
+                "title" => "Dragon World" , 
+                "description" => "Dragon World is a fun dragon game in a cartoon style. Battle other players or play cooperative in a survival game mode." , 
                 "thumbnail" => "thumbnail.jpg" , 
                 "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
                 "price" => 0,
                 "recommendedReview" => 0,
-                "notRecommendedReview" => 0
-            ]  
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ] , 
+            [   
+                "id" => 17 , 
+                "categoryID" => 2 , 
+                "title" => "Slime Rancher" , 
+                "description" => "Slime Rancher is the tale of Beatrix LeBeau, a plucky, young rancher who sets out for a life a thousand light years away from Earth on the ‘Far, Far Range’ where she tries her hand at making a living wrangling slimes." , 
+                "thumbnail" => "thumbnail.jpg" , 
+                "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
+                "price" => 0,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ] , 
+            [   
+                "id" => 18 , 
+                "categoryID" => 3 , 
+                "title" => "Outlast" , 
+                "description" => "Hell is an experiment you can't survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare." , 
+                "thumbnail" => "thumbnail.jpg" , 
+                "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
+                "price" => 0,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ] , 
+            [   
+                "id" => 19 , 
+                "categoryID" => 4 , 
+                "title" => "Grand Theft Auto V" , 
+                "description" => "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second." ,
+                "thumbnail" => "thumbnail.jpg" ,  
+                "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
+                "price" => 0,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ] , 
+            [   
+                "id" => 20 , 
+                "categoryID" => 5 , 
+                "title" => "Piko Park" , 
+                "description" => "PICO PARK is a cooperative local/online multiplay action puzzle game for 2-8 players." , 
+                "thumbnail" => "thumbnail.jpg" , 
+                "slidesPicture" => "slide1.jpg,slide2.jpg,slide3.jpg" , 
+                "price" => 0,
+                "recommendedReview" => 0,
+                "notRecommendedReview" => 0,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ] , 
+
         ]);
     }
 }
