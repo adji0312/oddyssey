@@ -28,6 +28,7 @@ Route::post('/game/{id}', [GameController::class, 'storeComment'])->middleware('
 
 Route::resource('/cart', CartController::class)->middleware('auth');
 Route::post('/cart/{id}', [CartController::class, 'addCart'])->middleware('auth');
+// Route::post('/cart/{id}', [TransactionController::class, 'storeTrc'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);

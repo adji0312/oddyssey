@@ -1,11 +1,15 @@
 @extends('layouts.main')
 
 @section('container')
-
-{{--  --}}
-    <div class="d-flex m-3 row">
-        <div class="card position-sticky shadow col-4 p-0" >
-            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top img-fluid" alt="..." >
+    @if(session()->has('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    <div class="d-flex m-3 justify-content-between">
+        <div class="card position-sticky shadow" style="width: 18rem;">
+            <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ $game->title }}</h5>
                 <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p><br>
@@ -93,18 +97,21 @@
                 @csrf
                 <div class="d-flex">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" value="recommended">
+                        <input class="form-check-input @error('status') is invalid @enderror" type="radio" name="status" value="recommended {{ old('status') }}">
                         <label class="form-check-label" for="inlineRadio1">Recommended</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" value="notRecommended">
+                        <input class="form-check-input @error('status') is invalid @enderror" type="radio" name="status" value="notRecommended {{ old('status') }}">
                         <label class="form-check-label" for="inlineRadio2">Not Recommended</label>
                     </div>
                 </div>
-                <textarea class="mt-2 mb-2 form-control" name="comment" id="" rows="5" value="{{ old('comment') }}"></textarea>
-                    @error('comment')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
+                @error('status')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <textarea class="mt-2 mb-2" name="comment" id="" cols="140" rows="5" value="{{ old('comment') }}"></textarea>
+                @error('comment')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 <button class="btn btn-dark" type="submit">POST</button>
             </form>
         </div>

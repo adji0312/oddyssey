@@ -43,26 +43,20 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store($id)
-    // {
-    //     $cart = new cart;
-    //     $game = Game::find($id);
-    //     // $cart->userID = auth()->user()->id;
-    //     // $cart->gameID = $game->id;
-    //     // $cart->save();
-
-    //     dd($game);
-    //     // return redirect('/cart');
-    // }
 
     public function addCart($id){
-        $cart = new cart;
+        
         $game = Game::find($id);
-        $cart->userID = auth()->user()->id;
-        $cart->gameID = $game->id;
-        $cart->save();
+        if(Cart::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){
+            return redirect()->back()->with('failed', 'Game was already in cart');
+        }else{
+            $cart = new cart;
+            $cart->userID = auth()->user()->id;
+            $cart->gameID = $game->id;
+            $cart->save();
+            return redirect('/cart');
+        }
 
-        return redirect('/cart');
     }
 
     /**

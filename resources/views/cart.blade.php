@@ -66,8 +66,14 @@
             </div>
         </div>
 
-        <button class="btn btn-dark float-end m-3" style="width:120px" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CHECKOUT</button>
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+        {{-- @foreach ($games as $a) --}}
+            <form method="post" action="/">
+                @csrf
+                <button class="btn btn-dark float-end m-3" style="width:120px" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CHECKOUT</button>
+            </form>  
+        {{-- @endforeach --}}
+        {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -79,13 +85,15 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                        <form method="post" action="/">
+                        <form method="post" action="/cart/{{ $cart->id }}">
+                            @csrf
+                            @method('delete')
                             <button type="button" class="btn btn-dark">Yes</button>
-                        </form>    
+                        </form> 
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     @else
         <div class="text-center">

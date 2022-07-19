@@ -60,8 +60,13 @@ class GameController extends Controller
         $game = Game::find($id);
         $review->userID = auth()->user()->id;
         $review->gameID = $game->id;
-        $review->status = $request['status'];
-        $review->comment = $request['comment'];
+
+        $validatedData = $request->validate([
+            'status' => 'required',
+            'comment' => 'required'
+        ]);
+        $review->status = $validatedData['status'];
+        $review->comment = $validatedData['comment'];
         $review->save();
 
         if($review->status == "recommended"){
