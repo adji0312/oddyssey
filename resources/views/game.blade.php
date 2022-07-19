@@ -4,7 +4,7 @@
 
 {{--  --}}
     <div class="d-flex m-3 row">
-        <div class="card position-sticky shadow col-4" >
+        <div class="card position-sticky shadow col-4 p-0" >
             <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top img-fluid" alt="..." >
             <div class="card-body">
                 <h5 class="card-title">{{ $game->title }}</h5>
@@ -56,9 +56,9 @@
             <p class="card-text ms-4"><small class="text-muted">Release Date</small></p>
             <h5 class="card-title ms-4">20 October 2021</h5>
         </div>
-        <div class="mt-3  col-4">
+        <div class="mt-3 col-4">
             <p class="card-text ms-4"><small class="text-muted">All Reviews</small></p>
-            <p class="ms-4">{{ $game->recommendedReview }} Recommended</p>
+            <p class="ms-4 mb">{{ $game->recommendedReview }} Recommended</p>
             <p class="ms-4">{{ $game->notRecommendedReview }} Not Recommended</p>
         </div>
     </div>
@@ -66,7 +66,7 @@
     {{-- <br> --}}
     {{-- SHOW 3 GAMES WITH SAME CATEGORY (CUMA MASI BINGUNG SORT BY APA?) --}}
     <h4 class="m-3 mt-4">More Like This</h4>
-    <div class="d-flex justify-content-between m-3 mb-4">
+    <div class="d-flex justify-content-start gap-5 m-3 mb-4">
         {{-- DISINI TINGGAL LOOPING 3x UNTUK GAME YANG KATEGORI NYA SAMA --}}
         @foreach ($games->take(3)->where('title','!=',$game->title) as $g)
             {{-- @if ($game->id != $g->id) --}}
@@ -88,7 +88,7 @@
 
     {{-- <br> --}}
     {{-- COMMENT SECTION --}}
-    <div class="card m-3 shadow" style="width: 68rem;">
+    <div class="card m-3 shadow">
         <div class="card-body">
             <h5 class="card-title">Leave a Review!</h5>
             <form action="{{ url('game', $game->id) }}" method="post">
@@ -103,10 +103,10 @@
                         <label class="form-check-label" for="inlineRadio2">Not Recommended</label>
                     </div>
                 </div>
-                <textarea class="mt-2 mb-2" name="comment" id="" cols="140" rows="5" value="{{ old('comment') }}"></textarea>
-                @error('comment')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
+                <textarea class="mt-2 mb-2 form-control" name="comment" id="" rows="5" value="{{ old('comment') }}"></textarea>
+                    @error('comment')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 <button class="btn btn-dark" type="submit">POST</button>
             </form>
         </div>
@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row">
             @foreach ($reviews as $review)
-                <div class="col-md-3 mb-4 card m-3 shadow" style="width: 18rem;">
+                <div class="col-md-3 mb-4 card m-3 shadow" style="width: 18.2rem;">
                     <div class="card-body">
                         @foreach ($users as $user)
                             @if ($user->id === $review->userID)

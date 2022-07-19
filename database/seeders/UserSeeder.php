@@ -33,6 +33,12 @@ class UserSeeder extends Seeder
                 "email" => "adminganteng@gmail.com" , 
                 "password" => "admin#1"
             ],
+            [
+                "name" => "Jeff Curry",
+                "role" => "admin" ,
+                "email" => "email123@gmail.com" , 
+                "password" => '$2y$10$dXD.EO07zn4JAzpv/Em8ke.bLoLjLmh2KutZ.dXneS3Lb4uNa53Lm'
+            ]
         ]);
     }
 }

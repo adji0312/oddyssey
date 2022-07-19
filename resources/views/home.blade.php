@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    {{ now() }}
+    {{-- {{ now() }} --}}
     <div class="row justify-content-center">
         <div class="col-md-10">
             <form action="/searchGame">
@@ -20,11 +20,11 @@
             {{-- tinggal loop --}}
             @foreach ($games->take(5) as $game)
                 <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
-                    <div class="card shadow" style="width: 15rem;" >
+                    <div class="card shadow h-100" style="width: 15rem;" >
                         
                         <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            {{ $game->recommendedReview }}
+                            {{-- {{ $game->recommendedReview }} --}}
                             <h5 class="card-title">{{ $game->title }}</h5>
                             <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p>
                             @if ($game->price == 0)

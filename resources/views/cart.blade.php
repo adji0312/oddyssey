@@ -13,7 +13,7 @@
                         @if($cart->gameID == $game->id)
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="d-flex">
-                                    <img src="https://wallpapercave.com/wp/wp5171877.jpg" style="height: 90px;" class="img-fluid rounded" alt="...">
+                                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 90px;" class="img-fluid rounded" alt="...">
                                     <div class="m-3">
                                         <h5 class="card-title">{{ $game->title }}</h5>
                                         <p class="card-text"><small class="text-muted">Category</small></p>

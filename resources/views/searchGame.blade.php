@@ -13,12 +13,12 @@
     </div>
 
     <div class="container">
-        <div class="row mt-4">
+        <div class="row row-cols-1 row-cols-md-5 mt-4">
             @foreach ($games as $game)
-                <div class="col-md-3 mb-3">
+                <div class="col mb-3">
                     <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
-                        <div class="card shadow" style="width: 16rem;">
-                            <img src="https://wallpapercave.com/wp/wp5171877.jpg" class="card-img-top" alt="...">
+                        <div class="card shadow h-100" style="">
+                            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $game->title }}</h5>
                                 <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p>
