@@ -29,65 +29,63 @@ class ManageGameController extends Controller
     }
 
     public function store(Request $request){
-
-        // $arr = array();
-
-        // foreach ($request->slides as $slide) {
-        //     array_push($arr, $slide->extension());
-        // }
-
-        // dd($arr);
-
-        // $request->slides = $arr ; 
-        
-        // $arr = implode(',', $arr);
-
-        // dd($request->slides);
-
     
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required',
             'category' => 'required',
             'price' => 'required|numeric' ,
             'thumbnail' => 'required|mimes:png,jpg,jpeg,svg' , 
-            'slides' => 'required|min:3' ,
-            'slides.*' => 'required|mimes:png,jpg,jpeg,svg' , 
+            'slidesPicture' => 'required|min:3' ,
+            'slidesPicture.*' => 'required|mimes:png,jpg,jpeg,svg' , 
             'description' => 'required'
         ]);
 
-        // $allSlides = $request->file('slides.0') ; 
-        // $validatedData['slidesPicture'] = implode(',',$request->slides);
+        // Upload Thumbnail
+        $request->file('thumbnail')->move('storage/image/'.$request->title ,'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension()); 
 
+        // Upload Slides
+        $arr = array();
+
+        $count = 0 ;
+        foreach($request->file('slidesPicture') as $image){
+            $count += 1 ;
+            $name = 'slide'.$count.'.'.$image->getClientOriginalExtension() ;
+            $image->move('storage/image/'.$request->title , $name); 
+            array_push($arr, $name);
+        }
+
+        $validatedData['slidesPicture'] = implode(',', $arr);
+
+        $check = Category::where('title','like',$request->category)->first();
+
+        if ( is_null($check) ) {
+            // dd($check);
+            Category::create([
+                'title'=>$request->category
+            ]);
+            $check = Category::where('title','like',$request->category)->first();
+        }
+        
+        $validatedData['thumbnail'] = 'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension();
+        $validatedData['categoryID'] = $check->id ;
+        $validatedData['recommendedReview'] = 0 ;
+        $validatedData['notRecommendedReview'] = 0 ;
+        $validatedData['created_at'] = now()->toDateString() ;
+        $validatedData['updated_at'] = now()->toDateString();
+        
         // dd($validatedData);
+        Game::create($validatedData);     
+        return redirect('/manageGame')->with('success', 'Game Added Successfully!');        
+    }
 
-
-        // $validatedData['slidesPicture']->implode('slidesPicture', ',');
-
-        // if($request->hasFile('slidesPicture')){
-        //     $count = 0 ;
-        //     foreach($request->file('slidesPicture') as $image){
-        //         $name = 'slides'.$count.'.'.$image->getClientOriginalExtension() ;
-        //         $count += 1 ;
-        //         dd($name);
-        //         dd($request->all());
-        //         $image->move(public_path().'/images/'.$request->title , $name); 
-        //     }
-        // }else{
-        //     dd($request->all());
-        // }
-
-        // $request->
-
-        // Password nya di hash biar aman
-        // $validatedData['password'] = Hash::make($validatedData['password']);
-        // $validatedData['confirmPassword'] = Hash::make($validatedData['confirmPassword']);
-
-        // $inputCategory = $validatedData['category'] ; 
-        // $category = Category::where('title','like','$inputCategory')->get();
-        // $validateData['categoryID'] = $category->id ;
-
-        // User::create($validatedData);
-        // return redirect('/manageGame')->with('success', 'Game Added Successfully!');
+    public function edit($id){
+        $game = Game::select('*')->find($id);
+        return view('updateGame',[
+            'title' => 'Update Game' , 
+            'active' => 'Admin' , 
+            'newGame' => $game 
+        ]);
+        
     }
 
 }

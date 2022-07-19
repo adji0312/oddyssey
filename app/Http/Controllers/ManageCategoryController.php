@@ -46,15 +46,14 @@ class ManageCategoryController extends Controller
                 return redirect('/manageCategory')->with('error', 'Category Already Exist! Please Try again');   
             }
         }
-        
-            
+             
         return redirect('/manageCategory')->with('success', 'Category Added Successfully!');
     }
 
     public function edit($id){
         $category = Category::select('id','title')->find($id);
         return view('updateCategory',[
-            'title' => 'Add Category' ,
+            'title' => 'Update Category' ,
             'active' => 'Admin', 
             'newCategory'=>$category
         ]);

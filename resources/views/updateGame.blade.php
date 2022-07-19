@@ -6,7 +6,7 @@
    <div class="col-lg-5">
      <main class="form-registration w-100 m-auto">
        
-       <form action="/addGame" method="post" class="bg-light p-4 shadow rounded" enctype="multipart/form-data">
+       <form action="{{ url('manageGame/updateGame/'.$newGame['id']) }}" method="post" class="bg-light p-4 shadow rounded" enctype="multipart/form-data">
          @csrf
          <div class="text-center">
             <p class="text-center fw-bold fs-4">Add Game</p>
