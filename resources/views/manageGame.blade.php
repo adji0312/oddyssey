@@ -39,9 +39,9 @@
                         <a href="/manageGame/updateGame/{{ $game->id }}">
                             <button class="w-100 btn btn-dark" type="submit">UPDATE</button>
                         </a>
-                        <form action="" method="post">
+                        <a href="/manageGame/delete/{{ $game->id }}">
                             <button class="w-100 btn btn-danger" type="submit">DELETE</button>
-                        </form>    
+                        </a>    
                     </div>
                 </div>
             </div>  

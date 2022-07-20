@@ -26,4 +26,9 @@ class Game extends Model
     public function slides(){
         return $this->hasMany(Slide::class);
     }
+
+    public function getCategory(){
+        $category = $this->category(); 
+        return $category->title ; 
+    }
 }

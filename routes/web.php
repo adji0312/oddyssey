@@ -70,4 +70,5 @@ Route::group(['middleware' => ['auth', 'rolecheck:admin']], function(){
     Route::put('/manageGame/updateGame/{id}',[ManageGameController::class, 'update']);
 
     Route::get('/manageCategory/delete/{id}',[ManageCategoryController::class, 'destroy']);
+    Route::get('/manageGame/delete/{id}',[ManageGameController::class, 'destroy']);
 });

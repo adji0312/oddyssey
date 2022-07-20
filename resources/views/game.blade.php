@@ -89,14 +89,15 @@
                         @endif    
                     </div>
                 @endif
-            @endforeach
+                
+        @endforeach
             {{-- {{ $g->categoryID }} --}}
             {{-- @if ($g->categoryID == $category->id) --}}
             {{-- @endif --}}
             {{-- @if ($game->id != $g->id) --}}
             {{-- @endif --}}
         @endforeach
-        {{-- {{ dd($games->take(4)->where('title','!=',$game->title)) ;  }} --}}
+    
     </div>
     
 
