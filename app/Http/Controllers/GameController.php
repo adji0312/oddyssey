@@ -21,10 +21,11 @@ class GameController extends Controller
             "title" => "All Games",
             "active" => "Dashboard",
             "games" => Game::all()->sortByDesc('recommendedReview'),
-            "hotGames" => Game::all()->sortByDesc('recommendedReview')->take(10), //untuk hot game sort by date (7)
+            "allGames" => Game::all(),
+            "hotGames" => Transaction::all(), //untuk hot game sort by date (7)
             "categories" => Category::all(),
-            "reviews" => Review::all(),
-            "transactions" => Transaction::all()
+            "reviews" => Review::all()
+            // "transactions" => Transaction::all()
         ]);
     }
 
