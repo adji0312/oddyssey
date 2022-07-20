@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -47,6 +48,9 @@ class CartController extends Controller
     public function addCart($id){
         
         $game = Game::find($id);
+        if(Transaction::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){
+            return redirect()->back()->with('failed', 'Game was already buy');
+        }
         if(Cart::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){
             return redirect()->back()->with('failed', 'Game was already in cart');
         }else{

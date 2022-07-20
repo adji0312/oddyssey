@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Game;
 use App\Models\Review;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +21,10 @@ class GameController extends Controller
             "title" => "All Games",
             "active" => "Dashboard",
             "games" => Game::all()->sortByDesc('recommendedReview'),
-            "hotGames" => Game::all()->sortByDesc('recommendedReview'), //untuk hot game sort by date (7)
+            "hotGames" => Game::all()->sortByDesc('recommendedReview')->take(10), //untuk hot game sort by date (7)
             "categories" => Category::all(),
-            "reviews" => Review::all()
+            "reviews" => Review::all(),
+            "transactions" => Transaction::all()
         ]);
     }
 
@@ -47,7 +49,7 @@ class GameController extends Controller
             "game" => $game,
             "active" => "Dashboard",
             "category" => Category::all()->where('id', $game->categoryID),
-            "games" => Game::all()->where('categoryID', $game->categoryID),
+            "games" => Game::all()->where('id', '!=', $game->id),
             "reviews" => Review::all()->where('gameID', $game->id),
             "users" => User::all(),
             "slides" => explode(',' , $game->slidesPicture)

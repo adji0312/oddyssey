@@ -1,7 +1,12 @@
 @extends('layouts.main')
 
 @section('container')
-    {{-- {{ now() }} --}}
+    @foreach ($transactions as $trc)
+        <?php $dateNow = now();
+        $dateTrc = $trc->created_at;
+        $diff = $dateNow->diffInDays($dateTrc);
+        ?>   
+    @endforeach
     <div class="row justify-content-center">
         <div class="col-md-10">
             <form action="/searchGame">
@@ -20,13 +25,12 @@
             {{-- tinggal loop --}}
             @foreach ($games->take(5) as $game)
                 <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
-                    <div class="card shadow h-100" style="width: 15rem;" >
-                        
-                        <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" alt="...">
+                    <div class="card shadow h-100" style="width: 13rem;">
+                        <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" height="110px" alt="...">
                         <div class="card-body">
                             {{-- {{ $game->recommendedReview }} --}}
                             <h5 class="card-title">{{ $game->title }}</h5>
-                            <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p>
+                            <p class="card-text">{{ Str::limit($game->description, 80, $end='...') }}</p>
                             @if ($game->price == 0)
                                 <h5 class="card-title float-end">FREE</h5>
                             @else
@@ -46,14 +50,14 @@
         <h2>Hot Games</h2><br>
         <div class="justify-content-center d-flex align-items-center"  >
             <div class="row " >
-                @foreach ( $games as $game)
+                @foreach ( $hotGames as $game)
                     @foreach ($categories as $category)
                         @if($category->id === $game->categoryID)
-                            <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark" style="width: 100% ; ">
+                            <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark" style="width: 100%; ">
                                 <div class="shadow p-0 mb-3 bg-body rounded " >
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex">
-                                            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 120px;" class="img-fluid rounded-start" alt="...">
+                                            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 100px; width:220px;" class="img-fluid rounded-start" alt="...">
                                             <div class="m-3 mt-4">
                                                 <h5 class="card-title">{{ $game->title }}</h5>
                                                 <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>

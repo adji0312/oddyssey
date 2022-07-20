@@ -1,24 +1,34 @@
 @extends('layouts.main')
 
 @section('container')
+    @if(session()->has('successBuy'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('successBuy') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @if($carts->count() != 0)
         <h4 class="card-title m-3">Your Cart</h4>
 
         <div class="shadow p-2 mb-2 bg-body rounded m-3">
             {{-- LOOPING DISINI CART NYA --}}
-            {{-- {{ $carts }} --}}
-            {{-- {{ $user->name }} --}}
                 @foreach ($carts as $cart)
                     @foreach ($games as $game)
                         @if($cart->gameID == $game->id)
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="d-flex">
-                                    <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 90px;" class="img-fluid rounded" alt="...">
-                                    <div class="m-3">
-                                        <h5 class="card-title">{{ $game->title }}</h5>
-                                        <p class="card-text"><small class="text-muted">Category</small></p>
+                                <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
+                                    <div class="d-flex">
+                                        <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" style="height: 100px; width:200px;" class="img-fluid rounded" alt="...">
+                                        <div class="m-3">
+                                            <h5 class="card-title">{{ $game->title }}</h5>
+                                            @foreach ($categories as $c)
+                                                @if ($c->id == $game->categoryID)
+                                                    <p class="card-text"><small class="text-muted">{{ $c->title }}</small></p>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
+                                </a>    
                                 <div class="m-2 text-center">
                                     @if($game->price == 0)
                                         <p class="mb-1">FREE</p>
@@ -41,14 +51,6 @@
                 <div class="d-flex">
                     <div class="m-2">
                         <h5 class="card-title">Total</h5>
-                        {{-- {{ $total }} --}}
-                        {{-- @foreach ($carts as $cart)
-                            @foreach ($games as $game)
-                                @if($cart->gameID == $game->id)
-                                    <p class="card-text"><small class="text-muted">{{ $total }}</small></p>
-                                @endif    
-                            @endforeach
-                        @endforeach --}}
                     </div>
                 </div>
                 <div class="m-2">
@@ -56,8 +58,6 @@
                         @foreach ($games as $game)
                             @if($cart->gameID == $game->id)
                                 <?php $total += $game->price ?>
-                                {{-- {{ $game->sum('price') }} --}}
-                                {{-- {{ $game->price->sum() }} --}}
                             @endif
                         @endforeach
                     @endforeach
@@ -66,14 +66,12 @@
             </div>
         </div>
 
-
-        {{-- @foreach ($games as $a) --}}
-            <form method="post" action="/">
-                @csrf
+            {{-- <form method="post" action="/cart">
+                @csrf --}}
                 <button class="btn btn-dark float-end m-3" style="width:120px" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CHECKOUT</button>
-            </form>  
-        {{-- @endforeach --}}
-        {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            {{-- </form> --}}
+            
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -85,21 +83,20 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                        <form method="post" action="/cart/{{ $cart->id }}">
+                        <form method="post" action="/cart">
                             @csrf
-                            @method('delete')
-                            <button type="button" class="btn btn-dark">Yes</button>
+                            <button type="submit" class="btn btn-dark">Yes</button>
                         </form> 
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
     @else
         <div class="text-center">
             <h1 class="card-title mb-4">Your Cart is Empty!</h1>
-            <img src="/img/shopping-cart-icon.png" style="width:200px;"><br>
-            <p class="mt-5 btn bg-white shadow"><a href="/" class="text-decoration-none text-dark">Let's Go Buy Game</a></p>
+            <img src="/img/shopping-cart-icon.png" style="width:180px;"><br>
+            <a href="/" class="btn btn-dark m-3 mt-3">Let's Go Buy Game</a>
         </div>    
     @endif
 @endsection

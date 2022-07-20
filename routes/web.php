@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ManageGameController;
 use App\Http\Controllers\ManageCategoryController;
+use App\Http\Controllers\TransactionController;
 use PharIo\Manifest\ManifestDocument;
 
 /*
@@ -28,7 +29,7 @@ Route::post('/game/{id}', [GameController::class, 'storeComment'])->middleware('
 
 Route::resource('/cart', CartController::class)->middleware('auth');
 Route::post('/cart/{id}', [CartController::class, 'addCart'])->middleware('auth');
-// Route::post('/cart/{id}', [TransactionController::class, 'storeTrc'])->middleware('auth');
+Route::post('/cart', [TransactionController::class, 'storeTrc'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);

@@ -17,11 +17,11 @@
             @foreach ($games as $game)
                 <div class="col mb-3">
                     <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
-                        <div class="card shadow h-100" style="">
-                            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" alt="...">
+                        <div class="card shadow h-100">
+                            <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" height="110px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $game->title }}</h5>
-                                <p class="card-text">{{ Str::limit($game->description, 100, $end='...') }}</p>
+                                <p class="card-text">{{ Str::limit($game->description, 80, $end='...') }}</p>
                                 @if ($game->price == 0)
                                     <h5 class="card-title float-end">FREE</h5>
                                 @else

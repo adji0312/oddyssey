@@ -10,18 +10,22 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    public function storeTrc($id){
+    public function storeTrc(){
         
-        $allGames = Cart::all();
-
-        foreach($allGames as $games){
-            Transaction::create([
-                'userID' => auth()->user()->id,
-                'gameID' => $games->gameID
-            ]);
+        // $c = Cart::all();
+        // $data = array();
+        // $data[] = Cart::all();
+        // dd($data);
+        // dd($c->get('id'));
+        // dd(count(Cart::all()->where('userID', auth()->user()->id)));
+        foreach(Cart::all()->where('userID', auth()->user()->id) as $cart){
+            // echo $cart->id;
+            $transaction = new transaction;
+            $transaction->userID = $cart->userID;
+            $transaction->gameID = $cart->gameID;
+            $transaction->save();
+            Cart::destroy($cart->id);
         }
-        
-
-        // return redirect()->back();
+        return redirect('/cart')->with('successBuy', 'Games successfully purchased!');
     }
 }
