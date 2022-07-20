@@ -21,8 +21,8 @@ class TransactionController extends Controller
         foreach(Cart::all()->where('userID', auth()->user()->id) as $cart){
             // echo $cart->id;
             $transaction = new transaction;
-            $transaction->userID = $cart->userID;
-            $transaction->gameID = $cart->gameID;
+            $transaction->user_id = $cart->userID;
+            $transaction->game_id = $cart->gameID;
             $transaction->save();
             Cart::destroy($cart->id);
         }
