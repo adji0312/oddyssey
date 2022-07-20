@@ -49,7 +49,7 @@ class GameController extends Controller
             "game" => $game,
             "active" => "Dashboard",
             "category" => Category::all()->where('id', $game->categoryID),
-            "games" => Game::all()->where('id', '!=', $game->id),
+            "games" => Game::all()->where('id', '!=', $game->id)->where('categoryID',$game->categoryID),
             "reviews" => Review::all()->where('gameID', $game->id),
             "users" => User::all(),
             "slides" => explode(',' , $game->slidesPicture)
