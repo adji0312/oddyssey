@@ -74,43 +74,43 @@
                 </div>
             </div>   
         @else
-            <div class="justify-content-center d-flex align-items-center">
-                <div class="row " >
-                    @foreach ( $hotGames->sortByDesc('created_at')->take(10) as $game)
-                        <?php $diff = now()->diffInDays($game->created_at) ?>
-                        @if ($diff <= 7)
-                            @foreach ($allGames as $g)
-                                @if ($g->id == $game->gameID)
-                                    @foreach ($categories as $category)
-                                        @if($category->id === $g->categoryID)
-                                            <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark" style="width: 100%; ">
-                                                <div class="shadow p-0 mb-3 bg-body rounded " >
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex">
-                                                            <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" style="height: 100px; width:220px;" class="img-fluid rounded-start" alt="...">
-                                                            <div class="m-3 mt-4">
-                                                                <h5 class="card-title">{{ $g->title }}</h5>
-                                                                <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
-                                                            </div>
+            @foreach ( $hotGames->sortByDesc('created_at')->take(10) as $game)
+                <?php $diff = now()->diffInDays($game->created_at) ?>
+                    @if ($diff <= 7)
+                        @foreach ($allGames as $g)
+                            @if ($g->id == $game->gameID)
+                                @foreach ($categories as $category)
+                                    @if($category->id === $g->categoryID)
+                                        <div class="row justify-content-center d-flex align-items-center shadow p-0 mb-3 rounded " >
+                                            <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark mb-0 p-0 " >
+                                               
+                                                <div class="d-flex justify-content-between align-items-center" >
+                                                    <div class="d-flex">
+                                                        <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" style="height: 100px;" class="img-fluid rounded-start" alt="...">
+                                                        <div class="m-3 mt-4">
+                                                            <h5 class="card-title">{{ $g->title }}</h5>
+                                                            <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
                                                         </div>
-                                                        <div class="m-2">
-                                                            @if ($g->price == 0)
-                                                                <p class="fs-5 mx-3">FREE</p>
-                                                            @else 
-                                                                <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
-                                                            @endif        
-                                                        </div>
-                                                    </div>  
-                                                </div>
+                                                    </div>
+                                                    <div>
+                                                        @if ($g->price == 0)
+                                                            <p class="fs-5 mx-3">FREE</p>
+                                                        @else 
+                                                            <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
+                                                        @endif 
+                                                    </div>
+       
+                        
+                                                </div>    
                                             </a>
-                                        @endif    
-                                    @endforeach
-                                @endif    
-                            @endforeach     
-                        @endif
-                    @endforeach
-                </div>
-            </div>            
+                                        </div>
+                                    @endif    
+                                @endforeach
+                            @endif    
+                        @endforeach     
+                    @endif
+            @endforeach
+            
         @endif
     </div>
 

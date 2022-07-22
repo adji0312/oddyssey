@@ -17,12 +17,7 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-<<<<<<< HEAD
     public function games(){
         return $this->hasMany(Game::class);
-=======
-    public function game(){
-        return $this->belongsTo(Game::class);
->>>>>>> ecc676d8f0cd79c9309dc2768d1ccca05f5b80bd
     }
 }
