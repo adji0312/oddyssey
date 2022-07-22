@@ -20,4 +20,8 @@ class Cart extends Model
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
+    
+    public function hotgames(){
+        return $this->hasMany(HotGame::class);
+    }
 }

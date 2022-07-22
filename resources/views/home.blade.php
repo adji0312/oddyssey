@@ -42,43 +42,76 @@
 
     {{-- HOT GAME YANG PALING BANYAK DIBELI LAST WEEK --}}
         <h2>Hot Games</h2><br>
-        <div class="justify-content-center d-flex align-items-center">
-            <div class="row " >
-                @foreach ( $hotGames->sortByDesc('created_at')->take(10) as $game)
-                    <?php $diff = now()->diffInDays($game->created_at) ?>
-                    @if ($diff <= 7)
-                        @foreach ($allGames as $g)
-                            @if ($g->id == $game->gameID)
-                                @foreach ($categories as $category)
-                                    @if($category->id === $g->categoryID)
-                                        <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark" style="width: 100%; ">
-                                            <div class="shadow p-0 mb-3 bg-body rounded " >
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex">
-                                                        <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" style="height: 100px; width:220px;" class="img-fluid rounded-start" alt="...">
-                                                        <div class="m-3 mt-4">
-                                                            <h5 class="card-title">{{ $g->title }}</h5>
-                                                            <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-2">
-                                                        @if ($g->price == 0)
-                                                            <p class="fs-5 mx-3">FREE</p>
-                                                        @else 
-                                                            <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
-                                                        @endif        
-                                                    </div>
-                                                </div>  
+        @if ($hotGames->count() == 0)
+            <div class="justify-content-center d-flex align-items-center">
+                <div class="row">
+                    @foreach ($allGames->sortByDesc('created_at')->take(10) as $g)
+                        @foreach ($categories as $category)
+                            @if($category->id === $g->categoryID)
+                                <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark" style="width: 100%; ">
+                                    <div class="shadow p-0 mb-3 bg-body rounded " >
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex">
+                                                <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" style="height: 100px; width:220px;" class="img-fluid rounded-start" alt="...">
+                                                <div class="m-3 mt-4">
+                                                    <h5 class="card-title">{{ $g->title }}</h5>
+                                                    <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
+                                                </div>
                                             </div>
-                                        </a>
-                                    @endif    
-                                @endforeach
+                                            <div class="m-2">
+                                                @if ($g->price == 0)
+                                                    <p class="fs-5 mx-3">FREE</p>
+                                                @else 
+                                                    <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
+                                                @endif        
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </a>
                             @endif    
-                        @endforeach     
-                    @endif
-                @endforeach
-            </div>
-        </div>            
+                        @endforeach 
+                    @endforeach
+                </div>
+            </div>   
+        @else
+            <div class="justify-content-center d-flex align-items-center">
+                <div class="row " >
+                    @foreach ( $hotGames->sortByDesc('created_at')->take(10) as $game)
+                        <?php $diff = now()->diffInDays($game->created_at) ?>
+                        @if ($diff <= 7)
+                            @foreach ($allGames as $g)
+                                @if ($g->id == $game->gameID)
+                                    @foreach ($categories as $category)
+                                        @if($category->id === $g->categoryID)
+                                            <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark" style="width: 100%; ">
+                                                <div class="shadow p-0 mb-3 bg-body rounded " >
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex">
+                                                            <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" style="height: 100px; width:220px;" class="img-fluid rounded-start" alt="...">
+                                                            <div class="m-3 mt-4">
+                                                                <h5 class="card-title">{{ $g->title }}</h5>
+                                                                <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-2">
+                                                            @if ($g->price == 0)
+                                                                <p class="fs-5 mx-3">FREE</p>
+                                                            @else 
+                                                                <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
+                                                            @endif        
+                                                        </div>
+                                                    </div>  
+                                                </div>
+                                            </a>
+                                        @endif    
+                                    @endforeach
+                                @endif    
+                            @endforeach     
+                        @endif
+                    @endforeach
+                </div>
+            </div>            
+        @endif
     </div>
 
 @endsection

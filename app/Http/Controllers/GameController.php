@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Game;
+use App\Models\HotGame;
 use App\Models\Review;
-use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,10 +22,12 @@ class GameController extends Controller
             "active" => "Dashboard",
             "games" => Game::all()->sortByDesc('recommendedReview'),
             "allGames" => Game::all(),
-            "hotGames" => Transaction::all(), //untuk hot game sort by date (7)
+            "hotGames" => HotGame::all(), //untuk hot game sort by date (7)
             "categories" => Category::all(),
-            "reviews" => Review::all()
+            "reviews" => Review::all(),
             // "transactions" => Transaction::all()
+            // "transactions" => Transaction::select('gameID', 'created_at')->groupByRaw('gameID, created_at')->distinct('gameID')->get(),
+            // "transactions" => Transaction::distinct('gameID')->get()
         ]);
     }
 

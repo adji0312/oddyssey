@@ -27,6 +27,14 @@ class Game extends Model
         return $this->hasMany(Slide::class);
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function hotgames(){
+        return $this->hasMany(Transaction::class);
+    }
+
     public function getCategory(){
         $category = $this->category(); 
         return $category->title ; 
