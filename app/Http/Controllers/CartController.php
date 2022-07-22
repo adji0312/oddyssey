@@ -48,7 +48,7 @@ class CartController extends Controller
     public function addCart($id){
         
         $game = Game::find($id);
-        if(Transaction::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){
+        if(Transaction::where('game_id', $game->id)->where('user_id', auth()->user()->id)->exists()){
             return redirect()->back()->with('failed', 'Game was already buy');
         }
         if(Cart::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){

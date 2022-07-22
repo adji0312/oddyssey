@@ -23,8 +23,8 @@ class TransactionController extends Controller
         // dd(HotGame::all());
         foreach(Cart::all()->where('userID', auth()->user()->id) as $cart){
             $transaction = new transaction;
-            $transaction->userID = $cart->userID;
-            $transaction->gameID = $cart->gameID;
+            $transaction->user_id = $cart->userID;
+            $transaction->game_id = $cart->gameID;
             $transaction->save();
             
             if(HotGame::where('gameID', $cart->gameID)->exists()){

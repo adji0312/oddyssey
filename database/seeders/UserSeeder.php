@@ -19,25 +19,25 @@ class UserSeeder extends Seeder
                 "name" => "Fernando Clemente",
                 "role" => "user" ,
                 "email" => "test123@gmail.com",
-                "password" => "password123"  
+                "password" => '$2y$10$OZ8YmeH098lHxCuEycej9OOnWDiDLr46DUQb.KQTVfudj0OmGlg.G' ,
+                "created_at" => now()->toDateString(),  
+                "updated_at" => now()->toDateString()
             ],
             [
                 "name" => "Adji Budhi Setyawan",
                 "role" => "user" , 
                 "email" => "test321@gmail.com" ,
-                "password" => "password321"
-            ],
-            [
-                "name" => "Admin", 
-                "role" => "admin",
-                "email" => "adminganteng@gmail.com" , 
-                "password" => "admin#1"
+                "password" => '$2y$10$ZDy/d8hBcGT2SM3yK7qlf.1cxhXtYf.ciKWvwZX.uV3qxpg5OvL3C' , 
+                "created_at" => now()->toDateString(),  
+                "updated_at" => now()->toDateString()
             ],
             [
                 "name" => "Jeff Curry",
                 "role" => "admin" ,
                 "email" => "email123@gmail.com" , 
-                "password" => '$2y$10$dXD.EO07zn4JAzpv/Em8ke.bLoLjLmh2KutZ.dXneS3Lb4uNa53Lm'
+                "password" => '$2y$10$dXD.EO07zn4JAzpv/Em8ke.bLoLjLmh2KutZ.dXneS3Lb4uNa53Lm',
+                "created_at" => now()->toDateString(),  
+                "updated_at" => now()->toDateString()
             ]
         ]);
     }
