@@ -15,7 +15,7 @@ class CreateHotGamesTable extends Migration
     {
         Schema::create('hot_games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('gameID');
+            $table->foreignId('game_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

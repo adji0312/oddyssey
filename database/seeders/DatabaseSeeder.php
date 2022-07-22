@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            GameSeeder::class ,
+            UserSeeder::class,
             CategorySeeder::class,
+            GameSeeder::class ,
             ReviewSeeder::class, 
-            CartSeeder::class, 
-            UserSeeder::class
+            CartSeeder::class 
         ]);
     }
 }

@@ -19,22 +19,22 @@ class TransactionController extends Controller
         // $data[] = Cart::all();
         // dd($data);
         // dd($c->get('id'));
-        // dd(Cart::all()->where('userID', auth()->user()->id));
+        // dd(Cart::all()->where('user_id', auth()->user()->id));
         // dd(HotGame::all());
-        foreach(Cart::all()->where('userID', auth()->user()->id) as $cart){
+        foreach(Cart::all()->where('user_id', auth()->user()->id) as $cart){
             $transaction = new transaction;
-            $transaction->user_id = $cart->userID;
-            $transaction->game_id = $cart->gameID;
+            $transaction->user_id = $cart->user_id;
+            $transaction->game_id = $cart->game_id;
             $transaction->save();
             
-            if(HotGame::where('gameID', $cart->gameID)->exists()){
+            if(HotGame::where('game_id', $cart->game_id)->exists()){
                 DB::table('hot_games')
-                ->where('gameID', $cart->gameID)
+                ->where('game_id', $cart->game_id)
                 ->update(['created_at' => now()]);
             }
             else{
                 $hotgame = new hotgame;
-                $hotgame->gameID = $cart->gameID;
+                $hotgame->game_id = $cart->game_id;
                 $hotgame->save();
             }
             

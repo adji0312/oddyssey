@@ -20,7 +20,7 @@ class CartController extends Controller
         return view('cart', [
             'title' => "Cart",
             'active' => "Cart",
-            'carts' => Cart::all()->where('userID', auth()->user()->id),
+            'carts' => Cart::all()->where('user_id', auth()->user()->id),
             'games' => Game::all(),
             'categories' => Category::all(),
             'user' => auth()->user(),
@@ -51,12 +51,12 @@ class CartController extends Controller
         if(Transaction::where('game_id', $game->id)->where('user_id', auth()->user()->id)->exists()){
             return redirect()->back()->with('failed', 'Game was already buy');
         }
-        if(Cart::where('gameID', $game->id)->where('userID', auth()->user()->id)->exists()){
+        if(Cart::where('game_id', $game->id)->where('user_id', auth()->user()->id)->exists()){
             return redirect()->back()->with('failed', 'Game was already in cart');
         }else{
             $cart = new cart;
-            $cart->userID = auth()->user()->id;
-            $cart->gameID = $game->id;
+            $cart->user_id = auth()->user()->id;
+            $cart->game_id = $game->id;
             $cart->save();
             return redirect('/cart');
         }

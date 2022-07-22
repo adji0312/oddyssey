@@ -69,7 +69,7 @@ class ManageGameController extends Controller
         }
         
         $validatedData['thumbnail'] = 'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-        $validatedData['categoryID'] = $check->id ;
+        $validatedData['category_id'] = $check->id ;
         $validatedData['recommendedReview'] = 0 ;
         $validatedData['notRecommendedReview'] = 0 ;
         $validatedData['created_at'] = now()->toDateString() ;
@@ -128,10 +128,10 @@ class ManageGameController extends Controller
         }
         
         $validatedData['thumbnail'] = 'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-        $validatedData['categoryID'] = $check->id ;
+        $validatedData['category_id'] = $check->id ;
 
         $game = Game::find($id);
-        $game->categoryID = $validatedData['categoryID'] ; 
+        $game->category_id = $validatedData['category_id'] ; 
         $game->title = $validatedData['title'];
         $game->description = $validatedData['description'];
         $game->thumbnail = $validatedData['thumbnail'];

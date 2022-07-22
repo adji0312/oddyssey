@@ -16,25 +16,29 @@ class CartSeeder extends Seeder
     {
         DB::table('carts')->insert([
             [
-                "id" => 1,
-                "gameID" => 1,
-                "userID" => 4
+                "game_id" => 1,
+                "user_id" => 3,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ],
             [
-                "id" => 2,
-                "gameID" => 3,
-                "userID" => 4
+                "game_id" => 3,
+                "user_id" => 3,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ],
             [
-                "id" => 3,
-                "gameID" => 2,
-                "userID" => 4
+                "game_id" => 2,
+                "user_id" => 3,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
             ],
             [
-                "id" => 4,
-                "gameID" => 5,
-                "userID" => 4
-            ],
+                "game_id" => 5,
+                "user_id" => 3,
+                "created_at" => now()->toDateString() , 
+                "updated_at" => now()->toDateString()
+            ]
 
         ]);
     }

@@ -14,7 +14,7 @@
             {{-- LOOPING DISINI CART NYA --}}
                 @foreach ($carts as $cart)
                     @foreach ($games as $game)
-                        @if($cart->gameID == $game->id)
+                        @if($cart->game_id == $game->id)
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
                                     <div class="d-flex">
@@ -22,7 +22,7 @@
                                         <div class="m-3">
                                             <h5 class="card-title">{{ $game->title }}</h5>
                                             @foreach ($categories as $c)
-                                                @if ($c->id == $game->categoryID)
+                                                @if ($c->id == $game->category_id)
                                                     <p class="card-text"><small class="text-muted">{{ $c->title }}</small></p>
                                                 @endif
                                             @endforeach

@@ -26,8 +26,8 @@ class GameController extends Controller
             "categories" => Category::all(),
             "reviews" => Review::all(),
             // "transactions" => Transaction::all()
-            // "transactions" => Transaction::select('gameID', 'created_at')->groupByRaw('gameID, created_at')->distinct('gameID')->get(),
-            // "transactions" => Transaction::distinct('gameID')->get()
+            // "transactions" => Transaction::select('game_id', 'created_at')->groupByRaw('game_id, created_at')->distinct('game_id')->get(),
+            // "transactions" => Transaction::distinct('game_id')->get()
         ]);
     }
 
@@ -51,9 +51,9 @@ class GameController extends Controller
             "title" => "Game Detail | ". $game->title,
             "game" => $game,
             "active" => "Dashboard",
-            "category" => Category::all()->where('id', $game->categoryID),
-            "games" => Game::all()->where('id', '!=', $game->id)->where('categoryID',$game->categoryID),
-            "reviews" => Review::all()->where('gameID', $game->id),
+            "category" => Category::all()->where('id', $game->category_id),
+            "games" => Game::all()->where('id', '!=', $game->id)->where('category_id',$game->category_id),
+            "reviews" => Review::all()->where('game_id', $game->id),
             "users" => User::all(),
             "slides" => explode(',' , $game->slidesPicture)
         ]);
@@ -63,8 +63,8 @@ class GameController extends Controller
         // dd($game);
         $review = new review;
         $game = Game::find($id);
-        $review->userID = auth()->user()->id;
-        $review->gameID = $game->id;
+        $review->user_id = auth()->user()->id;
+        $review->game_id = $game->id;
 
         $validatedData = $request->validate([
             'status' => 'required',
