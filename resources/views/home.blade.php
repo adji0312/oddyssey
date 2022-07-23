@@ -21,15 +21,18 @@
                 <a href="/game/{{ $game->title }}" class="text-decoration-none text-dark">
                     <div class="card shadow h-100" style="width: 13rem;">
                         <img src="/storage/image/{{ $game->title }}/thumbnail.jpg" class="card-img-top" height="110px" alt="...">
-                        <div class="card-body">
-                            {{-- {{ $game->recommendedReview }} --}}
-                            <h5 class="card-title">{{ $game->title }}</h5>
-                            <p class="card-text">{{ Str::limit($game->description, 80, $end='...') }}</p>
-                            @if ($game->price == 0)
-                                <h5 class="card-title float-end">FREE</h5>
-                            @else
-                                <h5 class="card-title float-end">IDR {{ $game->price }}</h5>
-                            @endif
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title">{{ $game->title }}</h5>
+                                <p class="card-text">{{ Str::limit($game->description, 80, $end='...') }}</p>
+                            </div>
+                            <div class="mt-2">
+                                @if ($game->price == 0)
+                                    <h5 class="card-title float-end mb-0">FREE</h5>
+                                @else
+                                    <h5 class="card-title float-end mb-0">IDR {{ number_format( $game->price ) }}</h5>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -63,7 +66,7 @@
                                             @if ($g->price == 0)
                                                 <p class="fs-5 mx-3">FREE</p>
                                             @else 
-                                                <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
+                                                <p class="fs-5 mx-3">IDR {{ number_format( $g->price ) }}</p>
                                             @endif        
                                         </div>
                                     </div>  
@@ -97,7 +100,7 @@
                                                     @if ($g->price == 0)
                                                         <p class="fs-5 mx-3">FREE</p>
                                                     @else 
-                                                        <p class="fs-5 mx-3">IDR {{ $g->price }}</p>
+                                                        <p class="fs-5 mx-3">IDR{{ number_format( $g->price ) }}</p>
                                                     @endif 
                                                 </div>
     

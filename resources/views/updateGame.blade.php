@@ -50,13 +50,13 @@
          <div class="form-floating">
             <div class="mb-3">
                <label for="title" style="font-weight: 600 ;">Category</label> 
-               <select class="form-control" id="category" name="category" required>
+               <select class="form-control" id="category_id" name="category_id" required>
                   <option placeholder="Category" selected></option>
                   @foreach ($categories as $category)
-                     @if ($category->id === $newGame->categoryID)
-                        <option selected>{{ $category->title }}</option>
+                     @if ($category->id === $newGame->category_id)
+                        <option value={{ $category->id }} selected>{{ $category->title }}</option>
                      @else 
-                        <option>{{ $category->title }}</option>
+                        <option value={{ $category->id }}>{{ $category->title }}</option>
                      @endif
                   @endforeach
                </select>

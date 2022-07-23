@@ -20,7 +20,7 @@ class ManageCategoryController extends Controller
             'title' => 'Category' ,
             'active' => 'Admin', 
             'name' => $splitName[0],
-            'categories' => Category::all()
+            'categories' => Category::all()->sortBy('title')
         ]);
 
     }
@@ -34,18 +34,11 @@ class ManageCategoryController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'title' => 'required'
+            'title' => 'require|unique:categories'
         ]);
 
         // ga bole duplicate 
-        try {
-            Category::create($validatedData);
-        } catch (QueryException $e) {
-            $errorCode = $e->errorInfo[1];          
-            if($errorCode == 1062){
-                return redirect('/manageCategory')->with('error', 'Category Already Exist! Please Try again');   
-            }
-        }
+        Category::create($validatedData);
              
         return redirect('/manageCategory')->with('success', 'Category Added Successfully!');
     }
@@ -60,13 +53,19 @@ class ManageCategoryController extends Controller
     }
 
     public function update(Request $request, $id){
-        $validatedData = $request->validate([
-            'title' => 'required'
-        ]);
 
         $category = Category::find($id);
-        $category->title = $validatedData['title'];
-        $category->save();
+
+        $rules = [] ;
+
+        if($request->title != $category->title){
+            $rules['title'] = 'required|unique:categories' ;
+        }
+
+        $validatedData = $request->validate($rules);
+
+        Category::where('id', $category->id)->update($validatedData);
+
         return redirect('/manageCategory')->with('success', 'Category Updated Successfully!');
 
     }

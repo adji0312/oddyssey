@@ -33,7 +33,7 @@
                                     @if($game->price == 0)
                                         <p class="mb-1">FREE</p>
                                     @else
-                                        <p class="mb-1">IDR {{ $game->price }}</p>
+                                        <p class="mb-1">IDR {{ number_format( $game->price ) }}</p>
                                     @endif
                                     <form action="/cart/{{ $cart->id }}" method="post">
                                         @csrf
@@ -56,12 +56,12 @@
                 <div class="m-2">
                     @foreach ($carts as $cart)
                         @foreach ($games as $game)
-                            @if($cart->gameID == $game->id)
+                            @if($cart->game_id == $game->id)
                                 <?php $total += $game->price ?>
                             @endif
                         @endforeach
                     @endforeach
-                    <p>IDR {{ $total }}</p>
+                    <p>IDR {{ number_format($total) }}</p>
                 </div>
             </div>
         </div>

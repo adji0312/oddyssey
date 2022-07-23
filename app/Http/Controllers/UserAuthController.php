@@ -49,7 +49,9 @@ class UserAuthController extends Controller
     }
 
     public function getAll(){
+        
         $transaction = Transaction::with('game')->where('user_id', Auth::user()->id)->get();
+
 
         return response([
             'message' => 'Success', 

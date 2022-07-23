@@ -14,8 +14,14 @@
           </div>
 
          <div class="mb-3">
-            <input type="title" class="form-control rounded" id="title" name="title" placeholder="Category">
+            <input type="title" class="form-control rounded @error('title') is-invalid @enderror" id="title" name="title" placeholder="Category" value="{{ $newCategory->title }}">
+            @error('title')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
          </div>
+           
          
          <div class="d-flex justify-content-start mt-3 gap-2">
             <div class="fw-bolder">

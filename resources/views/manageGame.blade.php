@@ -23,7 +23,7 @@
                     <div class="m-3">
                         <h5 class="card-title">{{ $game->title }}</h5>
                         @foreach ($categories as $category)
-                            @if ($category->id === $game->categoryID)
+                            @if ($category->id === $game->category_id)
                                 <p class="card-text"><small class="text-muted">{{ $category->title }}</small></p>
                             @endif
                         @endforeach
@@ -33,7 +33,7 @@
                     @if ($game->price === 0)
                         <p class="text-end mb-1">FREE</p>
                     @else
-                        <p class="text-end mb-1">IDR {{ $game->price }}</p>
+                        <p class="text-end mb-1">IDR {{ number_format( $game->price ) }}</p>
                     @endif
                     <div class="d-flex gap-2">
                         <a href="/manageGame/updateGame/{{ $game->id }}">

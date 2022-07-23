@@ -16,7 +16,7 @@
                 @if($game->price == 0)
                     <h5 class="card-title">FREE</h5>
                 @else
-                    <h5 class="card-title">IDR {{ $game->price }}</h5>
+                    <h5 class="card-title">IDR {{ number_format( $game->price ) }}</h5>
                 @endif    
                 <form method="post" action="{{ url('cart', $game->id) }}">
                     @csrf
@@ -85,7 +85,7 @@
                         @if ($g->price === 0)
                             <h5 class="card-title mt-2">FREE</h5>
                         @else
-                            <h5 class="card-title mt-2">IDR {{ $g->price }}</h5>
+                            <h5 class="card-title mt-2">IDR {{ number_format( $g->price ) }}</h5>
                         @endif    
                     </div>
                 @endif

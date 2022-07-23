@@ -33,7 +33,7 @@ class ManageGameController extends Controller
     public function store(Request $request){
     
         $validatedData = $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:games',
             'category' => 'required',
             'price' => 'required|numeric' ,
             'thumbnail' => 'required|mimes:png,jpg,jpeg,svg' , 
@@ -92,52 +92,52 @@ class ManageGameController extends Controller
     }
 
     public function update(Request $request,$id){
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'category' => 'required',
-            'price' => 'required|numeric' ,
-            'thumbnail' => 'required|mimes:png,jpg,jpeg,svg' , 
-            'slidesPicture' => 'required|min:3' ,
-            'slidesPicture.*' => 'required|mimes:png,jpg,jpeg,svg' , 
-            'description' => 'required'
-        ]);
-
-        // Upload Thumbnail
-        $request->file('thumbnail')->move('storage/image/'.$request->title ,'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension()); 
-
-        // Upload Slides
-        $arr = array();
-        $count = 0 ;
-        foreach($request->file('slidesPicture') as $image){
-            $count += 1 ;
-            $name = 'slide'.$count.'.'.$image->getClientOriginalExtension() ;
-            $image->move('storage/image/'.$request->title , $name); 
-            array_push($arr, $name);
-        }
-
-        $validatedData['slidesPicture'] = implode(',', $arr);
-
-        $check = Category::all()->where('title','like',$request->category)->first();
-
-        if ( is_null($check) ) {
-            // dd($check);
-            Category::create([
-                'title'=>$request->category
-            ]);
-            $check = Category::where('title','like',$request->category)->first();
-        }
-        
-        $validatedData['thumbnail'] = 'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension();
-        $validatedData['category_id'] = $check->id ;
 
         $game = Game::find($id);
-        $game->category_id = $validatedData['category_id'] ; 
-        $game->title = $validatedData['title'];
-        $game->description = $validatedData['description'];
-        $game->thumbnail = $validatedData['thumbnail'];
-        $game->slidesPicture = $validatedData['slidesPicture'];
-        $game->price = $validatedData['price'];
-        $game->save() ; 
+
+        $rules = [
+            'category_id' => 'required',
+            'price' => 'required|numeric' ,
+            'thumbnail' => 'mimes:png,jpg,jpeg,svg' , 
+            'slidesPicture' => 'min:3' ,
+            'slidesPicture.*' => 'required|mimes:png,jpg,jpeg,svg' , 
+            'description' => 'required'
+        ] ; 
+
+        if($request->title != $game->title){
+            $rules['title'] = 'required|unique:games' ;
+        }
+
+        $validatedData = $request->validate($rules);
+
+        // Upload Thumbnail
+        if( $request->file('thumbnail') ){
+            $request->file('thumbnail')->move('storage/image/'.$request->title ,'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension()); 
+            $validatedData['thumbnail'] = 'thumbnail'.'.'.$request->file('thumbnail')->getClientOriginalExtension();
+            // $game->thumbnail = $validatedData['thumbnail'];
+        }
+
+        if( $request->file('slidesPicture') ) { 
+            // Upload Slides
+            $arr = array();
+            $count = 0 ;
+            foreach($request->file('slidesPicture') as $image){
+                $count += 1 ;
+                $name = 'slide'.$count.'.'.$image->getClientOriginalExtension() ;
+                $image->move('storage/image/'.$request->title , $name); 
+                array_push($arr, $name);
+            }
+            $validatedData['slidesPicture'] = implode(',', $arr);
+            // $game->slidesPicture = $validatedData['slidesPicture'];
+        }
+
+        // $game->category_id = $validatedData['category_id'] ; 
+        // $game->description = $validatedData['description'];
+        // $game->price = $validatedData['price'];
+        // $game->save() ; 
+
+        Game::where('id', $game->id)->update($validatedData);
+
         return redirect('/manageGame')->with('success', 'Games Updated Successfully!');
 
 
