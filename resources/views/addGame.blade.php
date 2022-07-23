@@ -35,7 +35,7 @@
          <div class="form-floating">
             <div class="mb-3">
                <label for="title" style="font-weight: 600 ;">Title</label> 
-               <input type="text" name="title" class="form-control rounded @error('title') is-invalid @enderror" id="title" required value="{{ old('title') }}" >
+               <input type="text" name="title" class="form-control rounded @error('title') is-invalid @enderror" id="title"  value="{{ old('title') }}" >
             </div>
             @error('title')
               <div class="invalid-feedback">
@@ -47,7 +47,7 @@
          {{-- CATEGORY --}}
          <div class="form-group mb-3">
             <label for="title" style="font-weight: 600 ;">Category</label> 
-            <select class="form-control" id="category" name="category" required>
+            <select class="form-control" id="category" name="category" >
                <option placeholder="Category" selected></option>
                @foreach ($categories as $category)
                    <option>{{ $category->title }}</option>
@@ -63,7 +63,7 @@
          {{-- PRICE --}}
          <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">IDR</span>
-            <input type="number" name="price" class="form-control rounded-end @error('price') is-invalid @enderror" id="price" required value="{{ old('price') }}" placeholder="Price" >
+            <input type="number" name="price" class="form-control rounded-end @error('price') is-invalid @enderror" id="price"  value="{{ old('price') }}" placeholder="Price" >
              @error('price')
                <div class="invalid-feedback">
                  {{ $message }}
