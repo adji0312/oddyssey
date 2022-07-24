@@ -34,7 +34,7 @@ class ManageCategoryController extends Controller
 
     public function store(Request $request){
         $validatedData = $request->validate([
-            'title' => 'require|unique:categories'
+            'title' => 'required|unique:categories'
         ]);
 
         // ga bole duplicate 
