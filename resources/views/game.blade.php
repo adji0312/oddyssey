@@ -77,7 +77,7 @@
         @foreach ($games->take(3) as $g)
             {{-- {{ $category->id }} --}}
             @foreach ($category as $ct)
-                @if ($g->categoryID == $ct->id)
+                @if ($g->category_id == $ct->id)
                     <div class="text-end">
                         <a href="/game/{{ $g->title }}" class="text-decoration-none text-dark">
                             <img src="/storage/image/{{ $g->title }}/thumbnail.jpg" class="shadow rounded" alt="..." height="150px" width="330px">
@@ -138,7 +138,7 @@
                 <div class="col-md-3 mb-4 card m-3 shadow" style="width: 18.2rem;">
                     <div class="card-body">
                         @foreach ($users as $user)
-                            @if ($user->id === $review->userID)
+                            @if ($user->id === $review->user_id)
                                 <h5 class="card-title">{{ $user->name }}</h5>
                             @endif                           
                         @endforeach

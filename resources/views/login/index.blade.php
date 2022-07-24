@@ -27,20 +27,24 @@
           <div class="form-floating">
             <p class="mb-0">Email</p>
             <div class="mb-3">
-              <input type="email" name="email" class="form-control rounded @error('email') is invalid @enderror" id="email" placeholder="email" autofocus required value="{{ old('email') }}">
+              <input type="email" name="email" class="form-control rounded @error('email') is invalid @enderror" id="email" placeholder="email" value="{{ old('email') }}">
+              @error('email')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
             </div>
-            @error('email')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-            @enderror
           </div>
           <div class="form-floating">
             <p class="mb-0 mt-2">Password</p>
             <div class="mb-3">
-              <input type="password" name="password" class="form-control rounded" id="password" placeholder="password">
+              <input type="password" name="password" class="form-control rounded @error('password') is invalid @enderror" id="password" placeholder="password">
+              @error('password')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
             </div>
-            {{-- <input type="password" class="form-control rounded" id="floatingPassword" placeholder="Password"> --}}
           </div>
       
           <div class="checkbox mb-3">

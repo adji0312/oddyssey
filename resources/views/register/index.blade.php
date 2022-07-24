@@ -16,52 +16,52 @@
         <div class="form-floating">
           <p class="mb-0">Name</p>
           <div class="mb-3">
-            <input type="text" name="name" class="form-control rounded @error('name') is-invalid @enderror" id="name" required value="{{ old('name') }}">
+            <input type="text" name="name" class="form-control rounded @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
+            @error('name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
-          @error('name')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
         </div>
 
         {{-- EMAIL --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Email</p>
           <div class="mb-3">
-            <input type="email" name="email" class="form-control rounded @error('email') is-invalid @enderror" id="email" required value="{{ old('email') }}">
+            <input type="email" name="email" class="form-control rounded @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
+            @error('email')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>  
-          @error('email')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
         </div>
 
         {{-- PASSWORD --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Password</p>
           <div class="mb-3">
-            <input type="password" name="password" class="form-control rounded @error('password') is-invalid @enderror" id="password" required>
+            <input type="password" name="password" class="form-control rounded @error('password') is-invalid @enderror" id="password">
+            @error('password')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>  
-          @error('password')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
         </div>
 
         {{-- CONFIRM PASSWORD --}}
         <div class="form-floating">
           <p class="mb-0 mt-2">Confirm Password</p>
           <div class="mb-3">
-            <input type="password" name="confirmPassword" class="form-control rounded @error('confirmPassword') is-invalid @enderror" id="confirmPassword" required>
+            <input type="password" name="confirmPassword" class="form-control rounded @error('confirmPassword') is-invalid @enderror" id="confirmPassword">
+            @error('confirmPassword')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>  
-          @error('confirmPassword')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
         </div>
 
         {{-- BUTTON REGISTER --}}
